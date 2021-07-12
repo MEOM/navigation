@@ -1,6 +1,6 @@
 {
   "name": "@meom/navigation",
-  "version": "1.0.0",
+  "version": "0.1",
   "description": "MEOM navigation",
   "main": "index.js",
   "scripts": {
