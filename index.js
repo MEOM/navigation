@@ -29,6 +29,10 @@ const ESCAPE_KEY = 27;
         visuallyHiddenClass: 'screen-reader-text',
         expandChildNavText: 'Child menu',
         dropDownIcon: '<svg class="icon" aria-hidden="true" focusable="false" width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.793 4.793a1 1 0 001.414 0L12 1" stroke-width="2" stroke-linecap="round"></path></svg>',
+        
+        onCreate: null,
+        onOpenNav: null,
+        onCloseNav: null,
     };
 
     // Bind methods.
@@ -114,6 +118,15 @@ Navigation.prototype.create = function () {
     this.$element.addEventListener('keydown', this._handleFocus, false);
     document.addEventListener('click', this._handleDocClick, false);
 
+    /**
+     * Called after the component is initialized.
+     *
+     * @callback onCreate
+     */
+    if (this.settings.onCreate && typeof this.settings.onCreate === 'function') {
+        this.settings.onCreate(this.$element, this.$toggle);
+    }
+
     return this;
 };
 
@@ -131,6 +144,15 @@ Navigation.prototype.handleNav = function (event) {
 
         // Set navigation as opened.
         this.navOpened = true;
+
+        /**
+         * Called after the nav is opened.
+         *
+         * @callback onOpenNav
+         */
+        if (this.settings.onOpenNav && typeof this.settings.onOpenNav === 'function') {
+            this.settings.onOpenNav(this.$element, this.$toggle, event);
+        }
     } else {
         updateAria(this.$toggle, 'expanded');
         this.$element.classList.remove('is-opened');
@@ -145,6 +167,15 @@ Navigation.prototype.handleNav = function (event) {
 
         this._closeAllSubMenus();
         this._closeAllSubMenuToggles();
+
+        /**
+         * Called after the nav is closed.
+         *
+         * @callback onCloseNav
+         */
+        if (this.settings.onCloseNav && typeof this.settings.onCloseNav === 'function') {
+            this.settings.onCloseNav(this.$element, this.$toggle, event);
+        }
     }
 
     return this;
