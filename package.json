@@ -15,5 +15,10 @@
     "navigation"
   ],
   "author": "MEOM",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^9.0.6",
+    "@wordpress/prettier-config": "^1.0.5",
+    "eslint": "^7.30.0"
+  }
 }

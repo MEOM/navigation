@@ -1,0 +1,36 @@
+# WP-CLI database dumps that should not be tracked in git
+db-sync
+sql-dump-*.sql
+
+# Custon environment variables may include passwords and other
+# secrets and should not be tracked in git
+.env
+.env.*
+!.env.example
+
+# Libraries installed by Composer, Bower etc
+vendor/*
+!vendor/.gitkeep
+
+# Node Package Manager
+node_modules
+
+# Vagrant run-time output, not need to track in git
+bin
+.vagrant
+myrecording
+
+# Don't store any logs in version control
+*.log
+
+# OSX Desktop Services Store files.
+.DS_Store
+
+.idea
+
+# Regression test results
+routes.json
+backstop_data
+
+# VS Code related.
+.vscode
