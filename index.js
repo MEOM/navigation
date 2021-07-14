@@ -79,7 +79,7 @@ Navigation.prototype.create = function () {
     this.$element.setAttribute( 'data-meom-nav', 'navigation' );
 
     // Setup sub navs toggle buttons.
-    this.$subNavs.forEach( function ( subNav ) {
+    this.$subNavs.forEach( function ( subNav, index ) {
         // Hide link in JS to avoid cumulative layout shift (CLS).
         if ( this.settings.action === 'click' ) {
             subNav.setAttribute( 'hidden', '' );
@@ -87,9 +87,16 @@ Navigation.prototype.create = function () {
 
         const subToggleButton = document.createElement( 'button' );
         subToggleButton.setAttribute( 'data-meom-nav', 'sub-toggle' );
+        subToggleButton.setAttribute( 'aria-expanded', 'false' );
+
+        subToggleButton.setAttribute( 'aria-controls', `sub-menu-${ index }` );
+        // Add matching id for next sub-menu.
+        if ( subNav.nextElementSibling ) {
+            subNav.nextElementSibling.id = `sub-menu-${ index }`;
+        }
+
         subToggleButton.className = `${ this.settings.subToggleButtonClasses }`;
         subToggleButton.type = 'button';
-        subToggleButton.setAttribute( 'aria-expanded', 'false' );
 
         if ( this.settings.action === 'click' ) {
             subToggleButton.innerHTML = `${ subNav.textContent }${ this.settings.dropDownIcon }`;
@@ -99,19 +106,31 @@ Navigation.prototype.create = function () {
             subToggleButton.innerHTML = `<span class="${ this.settings.visuallyHiddenClass }">${ this.settings.expandChildNavText }</span>${ this.settings.dropDownIcon }`;
         }
 
+        // Add toggle button after anchor.
         subNav.after( subToggleButton );
     }, this );
 
     // Setup sub sub navs toggle buttons.
-    this.$subSubNavs.forEach( function ( subSubNav ) {
+    this.$subSubNavs.forEach( function ( subSubNav, index ) {
         const subToggleButton = document.createElement( 'button' );
         subToggleButton.setAttribute( 'data-meom-nav', 'sub-sub-toggle' );
+        subToggleButton.setAttribute( 'aria-expanded', 'false' );
+
+        subToggleButton.setAttribute(
+            'aria-controls',
+            `sub-sub-menu-${ index }`
+        );
+        // Add matching id for next sub-sub-menu.
+        if ( subSubNav.nextElementSibling ) {
+            subSubNav.nextElementSibling.id = `sub-sub-menu-${ index }`;
+        }
+
         subToggleButton.className = `${ this.settings.subSubToggleButtonClasses }`;
         subToggleButton.type = 'button';
-        subToggleButton.setAttribute( 'aria-expanded', 'false' );
 
         subToggleButton.innerHTML = `<span class="${ this.settings.visuallyHiddenClass }">${ this.settings.expandChildNavText }</span>${ this.settings.dropDownIcon }`;
 
+        // Add toggle button after anchor.
         subSubNav.after( subToggleButton );
     }, this );
 
