@@ -34,6 +34,8 @@ function Navigation( element, toggle, options = {} ) {
         onCreate: null,
         onOpenNav: null,
         onCloseNav: null,
+        onOpenSubNav: null,
+        onCloseSubNav: null,
     };
 
     // Bind methods.
@@ -249,7 +251,7 @@ Navigation.prototype.handleSubNav = function ( event ) {
 
     // Toggle class for next <ul> element (sub-menu).
     if ( target.nextElementSibling ) {
-        this._setSubMenu( target.nextElementSibling );
+        this._setSubMenu( target.nextElementSibling, event );
     }
 
     return this;
@@ -444,9 +446,10 @@ Navigation.prototype.closeAllSubMenus = function () {
  * Set classes and animate for sub-menu.
  *
  * @param {Node} submenu Sub menu node.
+ * @param {Object} event Event.
  * @return {this} this
  */
-Navigation.prototype.setSubMenu = function ( submenu ) {
+Navigation.prototype.setSubMenu = function ( submenu, event ) {
     if ( ! submenu ) {
         return this;
     }
@@ -458,8 +461,42 @@ Navigation.prototype.setSubMenu = function ( submenu ) {
         if ( this.settings.animateSubNav ) {
             animate( submenu, this.settings.animateSubNavClass );
         }
+
+        /**
+         * Called after the sub nav is opened.
+         *
+         * @callback onOpenSubNav
+         */
+        if (
+            this.settings.onOpenSubNav &&
+            typeof this.settings.onOpenSubNav === 'function'
+        ) {
+            this.settings.onOpenSubNav(
+                this.$element,
+                this.$toggle,
+                submenu,
+                event
+            );
+        }
     } else {
         submenu.classList.remove( 'is-opened' );
+
+        /**
+         * Called after the sub nav is closed.
+         *
+         * @callback onCloseSubNav
+         */
+        if (
+            this.settings.onCloseSubNav &&
+            typeof this.settings.onCloseSubNav === 'function'
+        ) {
+            this.settings.onCloseSubNav(
+                this.$element,
+                this.$toggle,
+                submenu,
+                event
+            );
+        }
     }
 
     return this;
