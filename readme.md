@@ -60,6 +60,13 @@ new Navigation(navElement, navToggle, {
     closeNavOnLastTab: false,
     visuallyHiddenClass: 'screen-reader-text',
     expandChildNavText: 'Child menu',
-    dropDownIcon: '<svg class="icon" aria-hidden="true" focusable="false" width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.793 4.793a1 1 0 001.414 0L12 1" stroke-width="2" stroke-linecap="round"></path></svg>',
+    dropDownIcon:
+        '<svg class="icon" aria-hidden="true" focusable="false" width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.793 4.793a1 1 0 001.414 0L12 1" stroke-width="2" stroke-linecap="round"></path></svg>',
+
+    onCreate: null,
+    onOpenNav: null,
+    onCloseNav: null,
+    onOpenSubNav: null,
+    onCloseSubNav: null,
 });
 ```
