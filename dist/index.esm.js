@@ -1,6 +1,55 @@
+/**
+ * Apply a CSS animation to an element
+ *
+ * @param {Node}    elem      The element to animate.
+ * @param {string}  animation Class name for animation.
+ * @param {boolean} hide      Class name for hiding animated element.
+ */
+function animate( elem, animation, hide ) {
+    // If there's no element or animation, do nothing.
+    if ( ! elem || ! animation ) {
+        return;
+    }
+
+    // Apply the animation.
+    elem.classList.add( animation );
+
+    // Detect when the animation ends.
+    elem.addEventListener(
+        'animationend',
+        function endAnimation() {
+            // Remove the animation class.
+            elem.classList.remove( animation );
+
+            // If the element should be hidden, hide it.
+            if ( hide ) {
+                elem.classList.remove( hide );
+            }
+
+            // Remove this event listener.
+            elem.removeEventListener( 'animationend', endAnimation, false );
+        },
+        false
+    );
+}
+
+/**
+ * Update ARIA.
+ *
+ * @param {Object} el Element.
+ * @param {string} aria ARIA to change.
+ */
+function updateAria( el, aria ) {
+    if ( 'undefined' === typeof el || 0 >= aria.length ) {
+        return;
+    }
+
+    const hiddenEl =
+        'true' === el.getAttribute( `aria-${ aria }` ) ? 'false' : 'true';
+    el.setAttribute( `aria-${ aria }`, hiddenEl );
+}
+
 /* Import internal depedencies. */
-import animate from './helpers/animate';
-import updateAria from './helpers/updateAria';
 
 const TAB_KEY = 9;
 const ESCAPE_KEY = 27;
@@ -17,6 +66,10 @@ function Navigation( element, toggle, options = {} ) {
     // Default settings.
     const defaults = {
         action: 'click',
+        toggleNavClass: true,
+        navClass: 'is-opened',
+        closeNavOnEscKey: true,
+        closeNavOnLastTab: false,
         subNavAnchors: '.menu-item-has-children.is-item-level-0 > a',
         subSubNavAnchors: 'ul .menu-item-has-children > a',
         subNavClass: '.sub-menu',
@@ -24,8 +77,6 @@ function Navigation( element, toggle, options = {} ) {
         subSubToggleButtonClasses: '',
         animateSubNav: false,
         animateSubNavClass: '',
-        closeNavOnEscKey: true,
-        closeNavOnLastTab: false,
         visuallyHiddenClass: 'screen-reader-text',
         expandChildNavText: 'Child menu',
         dropDownIcon:
@@ -169,7 +220,10 @@ Navigation.prototype.handleNav = function ( event ) {
     // If navigation is closed and we want to open it.
     if ( ! this.navOpened ) {
         updateAria( this.$toggle, 'expanded' );
-        this.$element.classList.add( 'is-opened' );
+
+        if ( this.settings.toggleNavClass ) {
+            this.$element.classList.add( 'is-opened' );
+        }
 
         // Set navigation as opened.
         this.navOpened = true;
@@ -187,7 +241,10 @@ Navigation.prototype.handleNav = function ( event ) {
         }
     } else {
         updateAria( this.$toggle, 'expanded' );
-        this.$element.classList.remove( 'is-opened' );
+
+        if ( this.settings.toggleNavClass ) {
+            this.$element.classList.remove( 'is-opened' );
+        }
 
         // Set focus back to toggle button if setting `closeNavOnLastTab` is true.
         if ( this.settings.closeNavOnLastTab ) {
@@ -527,4 +584,4 @@ Navigation.prototype.closeAllSubMenuToggles = function () {
     return this;
 };
 
-export default Navigation;
+export { Navigation, animate, updateAria };

@@ -1,15 +1,20 @@
 {
   "name": "@meom/navigation",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "MEOM navigation",
   "homepage": "https://github.com/MEOM/navigation",
   "repository": {
     "type": "git",
     "url": "https://github.com/MEOM/navigation"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "compress": "gzip -9 -fkc dist/index.min.js > dist/index.min.js.gz",
+    "show": "ls -lh dist/index.min.js.gz | awk '{print \"Gzipped script size:\", $5\"B\"}'",
+    "size": "npm run build -- --silent && npm run compress --silent && npm run show && rm dist/index.min.js.gz"
   },
   "keywords": [
     "navigation"
@@ -17,8 +22,12 @@
   "author": "MEOM",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.1",
     "@wordpress/eslint-plugin": "^9.0.6",
     "@wordpress/prettier-config": "^1.0.5",
-    "eslint": "^7.30.0"
+    "eslint": "^7.30.0",
+    "rollup": "^2.53.2",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
