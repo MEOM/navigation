@@ -21,7 +21,7 @@ npm install @meom/navigation
 Then you can import the library in your JavaScript and instantiate your navigation.
 
 ```js
-import Navigation from '@meom/navigation';
+import { Navigation } from '@meom/navigation';
 
 // Mandatory elements.
 const navElement = document.querySelector('.my-nav-wrapper');
@@ -33,6 +33,12 @@ if (!navElement || !navToggle) {
 }
 
 new Navigation(navElement, navToggle);
+```
+
+You can also import helper functions and use them in your Javascript.
+
+```js
+import { Navigation, animate, updateAria } from '@meom/navigation';
 ```
 
 ### Mandatory elements
@@ -49,6 +55,10 @@ There are several settings (object) which you can pass in as third argument:
 ```js
 new Navigation(navElement, navToggle, {
     action: 'click',
+    toggleNavClass: true,
+    navClass: 'is-opened',
+    closeNavOnEscKey: true,
+    closeNavOnLastTab: false,
     subNavAnchors: '.menu-item-has-children.is-item-level-0 > a',
     subSubNavAnchors: 'ul .menu-item-has-children > a',
     subNavClass: '.sub-menu',
@@ -56,8 +66,6 @@ new Navigation(navElement, navToggle, {
     subSubToggleButtonClasses: '',
     animateSubNav: false,
     animateSubNavClass: '',
-    closeNavOnEscKey: true,
-    closeNavOnLastTab: false,
     visuallyHiddenClass: 'screen-reader-text',
     expandChildNavText: 'Child menu',
     dropDownIcon:
