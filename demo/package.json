@@ -1,0 +1,17 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/navigation.js --bundle --outfile=dist/navigation.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@meom/navigation": "file:../../navigation"
+  },
+  "devDependencies": {
+    "esbuild": "^0.12.20"
+  }
+}
