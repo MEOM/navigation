@@ -1,0 +1,320 @@
+:root {
+    --primary-hue: 245;
+    --color-primary-hsl: var(--primary-hue), 80%, 43%;
+    --color-primary: hsl(var(--color-primary-hsl));
+    --color-primary-100: hsl(var(--primary-hue), 20%, 97%);
+    --color-primary-200: hsl(var(--primary-hue), 35%, 95%);
+    --color-primary-900: hsl(var(--primary-hue), 82%, 7%);
+
+    --color-primary-shadow: hsla(var(--color-primary-hsl), 0.75);
+    --color-grey-10: hsla(0, 0%, 0%, 0.1);
+    --color-grey-60: hsla(0, 0%, 0%, 0.6);
+    --color-grey-70: hsla(0, 0%, 0%, 0.7);
+    --color-grey-80: hsla(0, 0%, 0%, 0.8);
+
+    --color-success-100: hsl(152, 68%, 96%);
+    --color-success-500: hsl(164, 71%, 34%);
+
+    --color-error-100: hsl(360, 100%, 97%);
+    --color-error-500: hsl(360, 67%, 44%);
+
+    --color-white: hsl(0, 0%, 100%);
+    --color-black: hsl(0, 0%, 0%);
+
+    /* Font families. */
+    --font-family-sans:
+        -apple-system,
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica",
+        "Arial",
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol";
+    --font-family-mono:
+        "Monaco",
+        "Consolas",
+        "Andale Mono",
+        "DejaVu Sans Mono",
+        monospace;
+
+    /* Font sizes. */
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2rem;
+
+    --font-size-body: var(--font-size-lg);
+
+    /* Line heights. */
+    --line-height-sm: 1.25;
+    --line-height-md: 1.5;
+
+    /* Letter spacings. */
+    --letter-spacing-md: 0.1em;
+
+    --spacing-sm: 4px;
+    --spacing: 0.5rem;
+    --spacing-2x: 1rem;
+    --spacing-3x: 1.5rem;
+    --spacing-4x: 2rem;
+    --spacing-4x: 2rem;
+    --spacing-5x: 2.5rem;
+    --spacing-6x: 3rem;
+    --spacing-7x: 3.5rem;
+    --spacing-8x: 4rem;
+    --spacing-9x: 4.5rem;
+    --spacing-10x: 5rem;
+    --spacing-11x: 5.5rem;
+    --spacing-12x: 6rem;
+
+    --max-w-md: 42rem;
+    --max-w-lg: 60rem;
+    --max-w-xl: 78rem;
+    --max-w-2xl: 120rem;
+}
+
+/* Reset */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+[hidden] {
+    display: none;
+}
+
+/* Box sizing */
+html {
+    box-sizing: border-box;
+}
+
+/**
+  * Inherit box-sizing to make it easier to change the property
+  * for components that leverage other behavior.
+  */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/* Base styles */
+html {
+    font-size: 100%;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: var(--color-grey-70);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-md);
+    word-wrap: break-word;
+}
+
+body {
+    background-color: var(--color-primary-100);
+}
+
+a {
+    color: var(--color-primary);
+    transition: all var(--transition-duration-md) ease-in-out;
+}
+
+a:hover,
+a:focus,
+a:active {
+    color: var(--color-primary-900);
+}
+
+:focus {
+    outline: 2px solid var(--color-primary-900);
+}
+
+a:hover,
+a:active {
+    outline: 0;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    background-color: var(--color-primary);
+    border: 0;
+    border-radius: 0;
+    color: var(--color-white);
+    display: inline-block;
+    font-weight: 500;
+    padding: calc(var(--spacing) * 1.5) calc(var(--spacing-2x) * 1.25);
+    text-decoration: none;
+    transition: all var(--transition-duration-md) ease-in-out;
+}
+
+button:hover,
+button:active,
+button:focus {
+    background-color: var(--color-primary-900);
+    color: var(--color-white);
+}
+
+/* Flow spacing */
+.entry__content,
+.flow-spacing {
+    --flow-space: var(--spacing-4x);
+}
+
+.flow-spacing--sm {
+    --flow-space: var(--spacing-3x);
+}
+
+.flow-spacing--lg {
+    --flow-space: var(--spacing-6x);
+}
+
+.entry__content > * + *,
+.flow-spacing > * + * {
+    margin-bottom: 0;
+    margin-top: var(--flow-space);
+}
+
+.entry__content > h2,
+.entry__content > h3 {
+    --flow-space: calc(var(--spacing-4x) * 2);
+}
+
+.entry__content > h2 + p,
+.entry__content > h3 + p,
+.entry__content > h4 + p,
+.entry__content > h5 + p,
+.entry__content > h6 + p {
+    --flow-space: var(--spacing-3x);
+}
+
+/* Animations */
+.animated {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation-name: fade-in;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation-name: fade-out;
+}
+
+/* Icons */
+.icon {
+    fill: currentColor;
+    display: inline-block;
+    height: 1em;
+    pointer-events: none;
+    position: relative;
+    top: -0.0625em;
+    vertical-align: middle;
+    width: 1em;
+}
+
+/* Components */
+.site-header,
+.site-main {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--max-w-xl);
+    padding: var(--spacing-4x) var(--spacing-2x);
+}
+
+.site-main {
+    background-color: var(--color-white);
+}
+
+.entry__content > * {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--max-w-md);
+}
+
+/* Utilities */
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    /**
+       * Many screen reader and browser combinations announce broken words
+       * as they would appear visually.
+       */
+    word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+    background-color: var(--color-primary);
+    clip: auto !important;
+    clip-path: none;
+    color: var(--color-white);
+    display: block;
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    height: auto;
+    left: var(--spacing-2x);
+    outline-offset: -2px;
+    padding: var(--spacing-2x) var(--spacing-3x);
+    text-decoration: none;
+    top: var(--spacing-2x);
+    width: auto;
+    /* Above WP toolbar. */
+    z-index: 100000;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
