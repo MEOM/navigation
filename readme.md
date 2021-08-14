@@ -8,11 +8,12 @@ navigations:
 
 It's designed for WordPress navigation markup but can be tweaked for different use cases.
 
+## Demo
+[Demo in Github](https://meom.github.io/navigation/demo/).
+
 ## Usage
 
 If you’re using a bundler (such as Webpack or Rollup), you can install `@meom/navigation` through npm like any other dependency:
-
-Note, not yet available in NPM!
 
 ```bash
 npm install @meom/navigation
