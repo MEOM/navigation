@@ -8,8 +8,9 @@ navigations:
 
 It's designed for WordPress navigation markup but can be tweaked for different use cases.
 
-## Demo
-[Demo in Github](https://meom.github.io/navigation/demo/).
+## Demos
+- ["Click" Demo](https://meom.github.io/navigation/demo/).
+- ["Hover" Demo](https://meom.github.io/navigation/demo/hover.html).
 
 ## Usage
 
@@ -79,3 +80,54 @@ new Navigation(navElement, navToggle, {
     onCloseSubNav: null,
 });
 ```
+
+## Features and thinking
+By default navigation script opens sub menus only on click. This happens by adding `<button>` element after `<a>` element and hiding `<a>` with `hidden` attribute.
+
+Without JS kicking in:
+```html
+<li class="menu-item-has-children">
+    <a href="#">About</a>
+</li>
+```
+
+With JS kicking in:
+```html
+<li class="menu-item-has-children">
+    <a href="#" hidden>About</a>
+    <button>About</button>
+</li>
+```
+Script copies link item text (About) to the button text. And there we have the button which triggeres the sub menu.
+
+If list item doesn't have sub menu, nothing happens. Link will stay as link.
+
+### Hover menu
+What if all top level items needs to be as links no matter do they have sub menus or not?
+
+With option `action: hover` you can do exactly that.
+
+Without JS kicking in:
+```html
+<li class="menu-item-has-children">
+    <a href="#">About</a>
+</li>
+```
+
+With JS kicking in:
+```html
+<li class="menu-item-has-children">
+    <a href="#">About</a>
+    <button><span class="screen-reader-text">Child menu</span><svg>...</svg></button>
+</li>
+```
+We don't add `hidden` attribute in this case to the link. And `<button>` text is visually hidden and SVG icon is indicating the sub menu.
+
+### Other features
+- Close navigation and sub menus by `Esc` key or by clicking outside of the navigation.
+- Use `aria-expanded` on buttons to indicate state.
+- Use `aria-controls` to point which element (matching id) it is opening.
+
+## More reading about navigations
+- [Link + Disclosure Widget Navigation](https://adrianroselli.com/2019/06/link-disclosure-widget-navigation.html) by Adrian Roselli.
+- [In Praise of the Unambiguous Click Menu](https://css-tricks.com/in-praise-of-the-unambiguous-click-menu/) by Mark Root-Wiley.

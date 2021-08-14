@@ -274,7 +274,9 @@
   // src/navigation.js
   var navElement = document.querySelector(".js-site-nav-items");
   var navToggle = document.querySelector(".js-site-nav-toggle");
+  var isHoverDemo = document.querySelector(".js-site-nav-hover");
   new Navigation(navElement, navToggle, {
+    action: isHoverDemo ? "hover" : "click",
     subNavAnchors: ".js-site-nav-items > .menu-item-has-children > a",
     subSubNavAnchors: ".js-site-nav-items .sub-menu > .menu-item-has-children > a",
     subToggleButtonClasses: "site-nav__sub-toggle",
