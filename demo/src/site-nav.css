@@ -101,11 +101,18 @@
     color: var(--color-primary);
 }
 
-.site-nav__sub-toggle {
+.site-nav--click .site-nav__sub-toggle {
     align-items: center;
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+@media (max-width: 50em) {
+    .site-nav--hover .site-nav__sub-toggle {
+        position: absolute;
+        right: 0;
+    }
 }
 
 .site-nav__sub-sub-toggle {
@@ -164,6 +171,9 @@
 @media (min-width: 50.001em) {
     .site-nav__sub-toggle svg {
         margin-left: 0.2em;
+    }
+
+    .site-nav--click .site-nav__sub-toggle svg {
         top: 0.1em;
     }
 }
