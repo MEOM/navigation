@@ -126,7 +126,7 @@
       if (this.settings.toggleNavClass) {
         this.$element.classList.remove("is-opened");
       }
-      if (this.settings.closeNavOnLastTab) {
+      if (this.$toggle) {
         this.$toggle.focus();
       }
       this.navOpened = false;

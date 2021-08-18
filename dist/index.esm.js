@@ -246,8 +246,8 @@ Navigation.prototype.handleNav = function ( event ) {
             this.$element.classList.remove( 'is-opened' );
         }
 
-        // Set focus back to toggle button if setting `closeNavOnLastTab` is true.
-        if ( this.settings.closeNavOnLastTab ) {
+        // Set focus back to toggle button.
+        if ( this.$toggle ) {
             this.$toggle.focus();
         }
 
