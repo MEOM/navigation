@@ -18,7 +18,8 @@ function Navigation( element, toggle, options = {} ) {
     const defaults = {
         action: 'click',
         toggleNavClass: true,
-        navClass: 'is-opened',
+        toggleNavClassValue: 'is-opened',
+        toggleSubNavClassValue: 'is-opened',
         closeNavOnEscKey: true,
         closeNavOnLastTab: false,
         subNavAnchors: '.menu-item-has-children.is-item-level-0 > a',
@@ -29,7 +30,7 @@ function Navigation( element, toggle, options = {} ) {
         animateSubNav: false,
         animateSubNavClass: '',
         visuallyHiddenClass: 'screen-reader-text',
-        expandChildNavText: 'Child menu',
+        expandChildNavText: 'Sub menu',
         dropDownIcon:
             '<svg class="icon" aria-hidden="true" focusable="false" width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.793 4.793a1 1 0 001.414 0L12 1" stroke-width="2" stroke-linecap="round"></path></svg>',
 
@@ -173,7 +174,7 @@ Navigation.prototype.handleNav = function ( event ) {
         updateAria( this.$toggle, 'expanded' );
 
         if ( this.settings.toggleNavClass ) {
-            this.$element.classList.add( 'is-opened' );
+            this.$element.classList.add( this.settings.toggleNavClassValue );
         }
 
         // Set navigation as opened.
@@ -194,11 +195,11 @@ Navigation.prototype.handleNav = function ( event ) {
         updateAria( this.$toggle, 'expanded' );
 
         if ( this.settings.toggleNavClass ) {
-            this.$element.classList.remove( 'is-opened' );
+            this.$element.classList.remove( this.settings.toggleNavClassValue );
         }
 
-        // Set focus back to toggle button if setting `closeNavOnLastTab` is true.
-        if ( this.settings.closeNavOnLastTab ) {
+        // Set focus back to toggle button.
+        if ( this.$toggle ) {
             this.$toggle.focus();
         }
 
@@ -247,7 +248,7 @@ Navigation.prototype.handleSubNav = function ( event ) {
     // If toggle <button> next element (sub-menu) is already open, skip this.
     // Or we are clicking sub sub toggle.
     if (
-        ! target.nextElementSibling.classList.contains( 'is-opened' ) &&
+        ! target.nextElementSibling.classList.contains( this.settings.toggleSubNavClassValue ) &&
         ! target.matches( '[data-meom-nav="sub-sub-toggle"]' )
     ) {
         this._closeAllSubMenus();
@@ -293,7 +294,7 @@ Navigation.prototype.handleCloseNav = function ( event ) {
 Navigation.prototype.handleCloseSubNav = function ( event ) {
     // Set focusable elements inside sub-menu element.
     const openSubMenu = document.querySelector(
-        `${ this.settings.subNavClass }.is-opened`
+        `${ this.settings.subNavClass }.${ this.settings.toggleSubNavClassValue }`
     );
 
     if ( openSubMenu ) {
@@ -350,7 +351,7 @@ Navigation.prototype.handleCloseSubNav = function ( event ) {
 
         // Previous sub-menu toggle.
         const parentSubMenu = event.target.closest(
-            `${ this.settings.subNavClass }.is-opened`
+            `${ this.settings.subNavClass }.${ this.settings.toggleSubNavClassValue }`
         );
 
         // Set focus to sub menu toggle.
@@ -440,7 +441,7 @@ Navigation.prototype.handleDocClick = function ( event ) {
  */
 Navigation.prototype.closeAllSubMenus = function () {
     const openSubMenus = document.querySelectorAll(
-        `${ this.settings.subNavClass }.is-opened`
+        `${ this.settings.subNavClass }.${ this.settings.toggleSubNavClassValue }`
     );
 
     openSubMenus.forEach( function ( openSubMenu ) {
@@ -462,8 +463,8 @@ Navigation.prototype.setSubMenu = function ( submenu, event ) {
         return this;
     }
 
-    if ( ! submenu.classList.contains( 'is-opened' ) ) {
-        submenu.classList.add( 'is-opened' );
+    if ( ! submenu.classList.contains( this.settings.toggleSubNavClassValue ) ) {
+        submenu.classList.add( this.settings.toggleSubNavClassValue );
 
         // Base animation with class.
         if ( this.settings.animateSubNav ) {
@@ -487,7 +488,7 @@ Navigation.prototype.setSubMenu = function ( submenu, event ) {
             );
         }
     } else {
-        submenu.classList.remove( 'is-opened' );
+        submenu.classList.remove( this.settings.toggleSubNavClassValue );
 
         /**
          * Called after the sub nav is closed.

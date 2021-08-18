@@ -26,7 +26,8 @@
     const defaults = {
       action: "click",
       toggleNavClass: true,
-      navClass: "is-opened",
+      toggleNavClassValue: "is-opened",
+      toggleSubNavClassValue: "is-opened",
       closeNavOnEscKey: true,
       closeNavOnLastTab: false,
       subNavAnchors: ".menu-item-has-children.is-item-level-0 > a",
@@ -37,7 +38,7 @@
       animateSubNav: false,
       animateSubNavClass: "",
       visuallyHiddenClass: "screen-reader-text",
-      expandChildNavText: "Child menu",
+      expandChildNavText: "Sub menu",
       dropDownIcon: '<svg class="icon" aria-hidden="true" focusable="false" width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.793 4.793a1 1 0 001.414 0L12 1" stroke-width="2" stroke-linecap="round"></path></svg>',
       onCreate: null,
       onOpenNav: null,
@@ -115,7 +116,7 @@
     if (!this.navOpened) {
       updateAria(this.$toggle, "expanded");
       if (this.settings.toggleNavClass) {
-        this.$element.classList.add("is-opened");
+        this.$element.classList.add(this.settings.toggleNavClassValue);
       }
       this.navOpened = true;
       if (this.settings.onOpenNav && typeof this.settings.onOpenNav === "function") {
@@ -124,9 +125,9 @@
     } else {
       updateAria(this.$toggle, "expanded");
       if (this.settings.toggleNavClass) {
-        this.$element.classList.remove("is-opened");
+        this.$element.classList.remove(this.settings.toggleNavClassValue);
       }
-      if (this.settings.closeNavOnLastTab) {
+      if (this.$toggle) {
         this.$toggle.focus();
       }
       this.navOpened = false;
@@ -145,7 +146,7 @@
     if (!closestSubButton && !closestSubSubButton) {
       return this;
     }
-    if (!target.nextElementSibling.classList.contains("is-opened") && !target.matches('[data-meom-nav="sub-sub-toggle"]')) {
+    if (!target.nextElementSibling.classList.contains(this.settings.toggleSubNavClassValue) && !target.matches('[data-meom-nav="sub-sub-toggle"]')) {
       this._closeAllSubMenus();
       this._closeAllSubMenuToggles();
     }
@@ -162,7 +163,7 @@
     return this;
   };
   Navigation.prototype.handleCloseSubNav = function(event) {
-    const openSubMenu = document.querySelector(`${this.settings.subNavClass}.is-opened`);
+    const openSubMenu = document.querySelector(`${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`);
     if (openSubMenu) {
       const focusableElements = openSubMenu.querySelectorAll([
         "a[href]",
@@ -190,7 +191,7 @@
         this._closeAllSubMenuToggles();
         return this;
       }
-      const parentSubMenu = event.target.closest(`${this.settings.subNavClass}.is-opened`);
+      const parentSubMenu = event.target.closest(`${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`);
       if (parentSubMenu) {
         const subMenuToggle = parentSubMenu.previousElementSibling;
         if (subMenuToggle) {
@@ -233,7 +234,7 @@
     return this;
   };
   Navigation.prototype.closeAllSubMenus = function() {
-    const openSubMenus = document.querySelectorAll(`${this.settings.subNavClass}.is-opened`);
+    const openSubMenus = document.querySelectorAll(`${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`);
     openSubMenus.forEach(function(openSubMenu) {
       this._setSubMenu(openSubMenu);
     }, this);
@@ -243,8 +244,8 @@
     if (!submenu) {
       return this;
     }
-    if (!submenu.classList.contains("is-opened")) {
-      submenu.classList.add("is-opened");
+    if (!submenu.classList.contains(this.settings.toggleSubNavClassValue)) {
+      submenu.classList.add(this.settings.toggleSubNavClassValue);
       if (this.settings.animateSubNav) {
         animate(submenu, this.settings.animateSubNavClass);
       }
@@ -252,7 +253,7 @@
         this.settings.onOpenSubNav(this.$element, this.$toggle, submenu, event);
       }
     } else {
-      submenu.classList.remove("is-opened");
+      submenu.classList.remove(this.settings.toggleSubNavClassValue);
       if (this.settings.onCloseSubNav && typeof this.settings.onCloseSubNav === "function") {
         this.settings.onCloseSubNav(this.$element, this.$toggle, submenu, event);
       }
