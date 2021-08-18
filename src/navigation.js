@@ -29,7 +29,7 @@ function Navigation( element, toggle, options = {} ) {
         animateSubNav: false,
         animateSubNavClass: '',
         visuallyHiddenClass: 'screen-reader-text',
-        expandChildNavText: 'Child menu',
+        expandChildNavText: 'Sub menu',
         dropDownIcon:
             '<svg class="icon" aria-hidden="true" focusable="false" width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.793 4.793a1 1 0 001.414 0L12 1" stroke-width="2" stroke-linecap="round"></path></svg>',
 
