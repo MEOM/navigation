@@ -112,6 +112,7 @@
     .site-nav--hover .site-nav__sub-toggle {
         position: absolute;
         right: 0;
+        top: -0.4em;
     }
 }
 

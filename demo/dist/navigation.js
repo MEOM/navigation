@@ -281,14 +281,18 @@
     subSubNavAnchors: ".js-site-nav-items .sub-menu > .menu-item-has-children > a",
     subToggleButtonClasses: "site-nav__sub-toggle",
     subSubToggleButtonClasses: "site-nav__sub-sub-toggle",
+    toggleNavClass: false,
     closeNavOnLastTab: true,
     onOpenNav: function(element) {
       document.documentElement.classList.add("overflow-hidden");
       document.documentElement.classList.add("is-site-nav-opened");
+      element.classList.add("is-opened");
+      animate(element, "fade-in");
     },
     onCloseNav: function(element) {
       document.documentElement.classList.remove("overflow-hidden");
       document.documentElement.classList.remove("is-site-nav-opened");
+      animate(element, "fade-out", "is-opened");
     }
   });
 })();
