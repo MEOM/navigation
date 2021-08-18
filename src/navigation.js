@@ -18,7 +18,7 @@ function Navigation( element, toggle, options = {} ) {
     const defaults = {
         action: 'click',
         toggleNavClass: true,
-        navClass: 'is-opened',
+        toggleNavClassValue: 'is-opened',
         closeNavOnEscKey: true,
         closeNavOnLastTab: false,
         subNavAnchors: '.menu-item-has-children.is-item-level-0 > a',
@@ -173,7 +173,7 @@ Navigation.prototype.handleNav = function ( event ) {
         updateAria( this.$toggle, 'expanded' );
 
         if ( this.settings.toggleNavClass ) {
-            this.$element.classList.add( 'is-opened' );
+            this.$element.classList.add( this.settings.toggleNavClassValue );
         }
 
         // Set navigation as opened.
@@ -194,7 +194,7 @@ Navigation.prototype.handleNav = function ( event ) {
         updateAria( this.$toggle, 'expanded' );
 
         if ( this.settings.toggleNavClass ) {
-            this.$element.classList.remove( 'is-opened' );
+            this.$element.classList.remove( this.settings.toggleNavClassValue );
         }
 
         // Set focus back to toggle button.

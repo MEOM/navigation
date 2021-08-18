@@ -73,7 +73,7 @@
         const defaults = {
             action: 'click',
             toggleNavClass: true,
-            navClass: 'is-opened',
+            toggleNavClassValue: 'is-opened',
             closeNavOnEscKey: true,
             closeNavOnLastTab: false,
             subNavAnchors: '.menu-item-has-children.is-item-level-0 > a',
@@ -84,7 +84,7 @@
             animateSubNav: false,
             animateSubNavClass: '',
             visuallyHiddenClass: 'screen-reader-text',
-            expandChildNavText: 'Child menu',
+            expandChildNavText: 'Sub menu',
             dropDownIcon:
                 '<svg class="icon" aria-hidden="true" focusable="false" width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.793 4.793a1 1 0 001.414 0L12 1" stroke-width="2" stroke-linecap="round"></path></svg>',
 
@@ -228,7 +228,7 @@
             updateAria( this.$toggle, 'expanded' );
 
             if ( this.settings.toggleNavClass ) {
-                this.$element.classList.add( 'is-opened' );
+                this.$element.classList.add( this.settings.toggleNavClassValue );
             }
 
             // Set navigation as opened.
@@ -249,7 +249,7 @@
             updateAria( this.$toggle, 'expanded' );
 
             if ( this.settings.toggleNavClass ) {
-                this.$element.classList.remove( 'is-opened' );
+                this.$element.classList.remove( this.settings.toggleNavClassValue );
             }
 
             // Set focus back to toggle button.

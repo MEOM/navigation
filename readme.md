@@ -58,7 +58,7 @@ There are several settings (object) which you can pass in as third argument:
 new Navigation(navElement, navToggle, {
     action: 'click',
     toggleNavClass: true,
-    navClass: 'is-opened',
+    toggleNavClassValue: 'is-opened',
     closeNavOnEscKey: true,
     closeNavOnLastTab: false,
     subNavAnchors: '.menu-item-has-children.is-item-level-0 > a',

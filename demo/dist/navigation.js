@@ -26,7 +26,7 @@
     const defaults = {
       action: "click",
       toggleNavClass: true,
-      navClass: "is-opened",
+      toggleNavClassValue: "is-opened",
       closeNavOnEscKey: true,
       closeNavOnLastTab: false,
       subNavAnchors: ".menu-item-has-children.is-item-level-0 > a",
@@ -37,7 +37,7 @@
       animateSubNav: false,
       animateSubNavClass: "",
       visuallyHiddenClass: "screen-reader-text",
-      expandChildNavText: "Child menu",
+      expandChildNavText: "Sub menu",
       dropDownIcon: '<svg class="icon" aria-hidden="true" focusable="false" width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.793 4.793a1 1 0 001.414 0L12 1" stroke-width="2" stroke-linecap="round"></path></svg>',
       onCreate: null,
       onOpenNav: null,
@@ -115,7 +115,7 @@
     if (!this.navOpened) {
       updateAria(this.$toggle, "expanded");
       if (this.settings.toggleNavClass) {
-        this.$element.classList.add("is-opened");
+        this.$element.classList.add(this.settings.toggleNavClassValue);
       }
       this.navOpened = true;
       if (this.settings.onOpenNav && typeof this.settings.onOpenNav === "function") {
@@ -124,7 +124,7 @@
     } else {
       updateAria(this.$toggle, "expanded");
       if (this.settings.toggleNavClass) {
-        this.$element.classList.remove("is-opened");
+        this.$element.classList.remove(this.settings.toggleNavClassValue);
       }
       if (this.$toggle) {
         this.$toggle.focus();
@@ -281,18 +281,14 @@
     subSubNavAnchors: ".js-site-nav-items .sub-menu > .menu-item-has-children > a",
     subToggleButtonClasses: "site-nav__sub-toggle",
     subSubToggleButtonClasses: "site-nav__sub-sub-toggle",
-    toggleNavClass: false,
     closeNavOnLastTab: true,
     onOpenNav: function(element) {
       document.documentElement.classList.add("overflow-hidden");
       document.documentElement.classList.add("is-site-nav-opened");
-      element.classList.add("is-opened");
-      animate(element, "fade-in");
     },
     onCloseNav: function(element) {
       document.documentElement.classList.remove("overflow-hidden");
       document.documentElement.classList.remove("is-site-nav-opened");
-      animate(element, "fade-out", "is-opened");
     }
   });
 })();
