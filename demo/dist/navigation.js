@@ -27,6 +27,7 @@
       action: "click",
       toggleNavClass: true,
       toggleNavClassValue: "is-opened",
+      toggleSubNavClassValue: "is-opened",
       closeNavOnEscKey: true,
       closeNavOnLastTab: false,
       subNavAnchors: ".menu-item-has-children.is-item-level-0 > a",
@@ -145,7 +146,7 @@
     if (!closestSubButton && !closestSubSubButton) {
       return this;
     }
-    if (!target.nextElementSibling.classList.contains("is-opened") && !target.matches('[data-meom-nav="sub-sub-toggle"]')) {
+    if (!target.nextElementSibling.classList.contains(this.settings.toggleSubNavClassValue) && !target.matches('[data-meom-nav="sub-sub-toggle"]')) {
       this._closeAllSubMenus();
       this._closeAllSubMenuToggles();
     }
@@ -162,7 +163,7 @@
     return this;
   };
   Navigation.prototype.handleCloseSubNav = function(event) {
-    const openSubMenu = document.querySelector(`${this.settings.subNavClass}.is-opened`);
+    const openSubMenu = document.querySelector(`${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`);
     if (openSubMenu) {
       const focusableElements = openSubMenu.querySelectorAll([
         "a[href]",
@@ -190,7 +191,7 @@
         this._closeAllSubMenuToggles();
         return this;
       }
-      const parentSubMenu = event.target.closest(`${this.settings.subNavClass}.is-opened`);
+      const parentSubMenu = event.target.closest(`${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`);
       if (parentSubMenu) {
         const subMenuToggle = parentSubMenu.previousElementSibling;
         if (subMenuToggle) {
@@ -233,7 +234,7 @@
     return this;
   };
   Navigation.prototype.closeAllSubMenus = function() {
-    const openSubMenus = document.querySelectorAll(`${this.settings.subNavClass}.is-opened`);
+    const openSubMenus = document.querySelectorAll(`${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`);
     openSubMenus.forEach(function(openSubMenu) {
       this._setSubMenu(openSubMenu);
     }, this);
@@ -243,8 +244,8 @@
     if (!submenu) {
       return this;
     }
-    if (!submenu.classList.contains("is-opened")) {
-      submenu.classList.add("is-opened");
+    if (!submenu.classList.contains(this.settings.toggleSubNavClassValue)) {
+      submenu.classList.add(this.settings.toggleSubNavClassValue);
       if (this.settings.animateSubNav) {
         animate(submenu, this.settings.animateSubNavClass);
       }
@@ -252,7 +253,7 @@
         this.settings.onOpenSubNav(this.$element, this.$toggle, submenu, event);
       }
     } else {
-      submenu.classList.remove("is-opened");
+      submenu.classList.remove(this.settings.toggleSubNavClassValue);
       if (this.settings.onCloseSubNav && typeof this.settings.onCloseSubNav === "function") {
         this.settings.onCloseSubNav(this.$element, this.$toggle, submenu, event);
       }

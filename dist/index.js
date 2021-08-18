@@ -74,6 +74,7 @@
             action: 'click',
             toggleNavClass: true,
             toggleNavClassValue: 'is-opened',
+            toggleSubNavClassValue: 'is-opened',
             closeNavOnEscKey: true,
             closeNavOnLastTab: false,
             subNavAnchors: '.menu-item-has-children.is-item-level-0 > a',
@@ -302,7 +303,7 @@
         // If toggle <button> next element (sub-menu) is already open, skip this.
         // Or we are clicking sub sub toggle.
         if (
-            ! target.nextElementSibling.classList.contains( 'is-opened' ) &&
+            ! target.nextElementSibling.classList.contains( this.settings.toggleSubNavClassValue ) &&
             ! target.matches( '[data-meom-nav="sub-sub-toggle"]' )
         ) {
             this._closeAllSubMenus();
@@ -348,7 +349,7 @@
     Navigation.prototype.handleCloseSubNav = function ( event ) {
         // Set focusable elements inside sub-menu element.
         const openSubMenu = document.querySelector(
-            `${ this.settings.subNavClass }.is-opened`
+            `${ this.settings.subNavClass }.${ this.settings.toggleSubNavClassValue }`
         );
 
         if ( openSubMenu ) {
@@ -405,7 +406,7 @@
 
             // Previous sub-menu toggle.
             const parentSubMenu = event.target.closest(
-                `${ this.settings.subNavClass }.is-opened`
+                `${ this.settings.subNavClass }.${ this.settings.toggleSubNavClassValue }`
             );
 
             // Set focus to sub menu toggle.
@@ -495,7 +496,7 @@
      */
     Navigation.prototype.closeAllSubMenus = function () {
         const openSubMenus = document.querySelectorAll(
-            `${ this.settings.subNavClass }.is-opened`
+            `${ this.settings.subNavClass }.${ this.settings.toggleSubNavClassValue }`
         );
 
         openSubMenus.forEach( function ( openSubMenu ) {
@@ -517,8 +518,8 @@
             return this;
         }
 
-        if ( ! submenu.classList.contains( 'is-opened' ) ) {
-            submenu.classList.add( 'is-opened' );
+        if ( ! submenu.classList.contains( this.settings.toggleSubNavClassValue ) ) {
+            submenu.classList.add( this.settings.toggleSubNavClassValue );
 
             // Base animation with class.
             if ( this.settings.animateSubNav ) {
@@ -542,7 +543,7 @@
                 );
             }
         } else {
-            submenu.classList.remove( 'is-opened' );
+            submenu.classList.remove( this.settings.toggleSubNavClassValue );
 
             /**
              * Called after the sub nav is closed.
