@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.3.0 released November 1, 2021
+### Added
+- Demo examples.
+
+### Changed
+- `is-opened` hard coded class to settings.
+
 ## Version 0.2.0 released July 16, 2021
 
 ### Added
