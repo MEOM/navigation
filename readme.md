@@ -4,7 +4,7 @@ MEOM navigation component is work in progress. It gives head start for two types
 navigations:
 
 1. "Click" navigation where sub menus open only on click.
-1. "Hover" navigation where sub menus open on hover also.
+1. "Hover" navigation where sub menus open on hover also. Note that we don't actually open sub menus on hover in the demo. That's because we don't have the logic to close sub menus with Esc-key if they are opened with mouse hover. That's up to you.
 
 It's designed for WordPress navigation markup but can be tweaked for different use cases.
 
