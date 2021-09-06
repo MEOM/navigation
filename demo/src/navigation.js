@@ -40,14 +40,14 @@ new Navigation(navElement, navToggle, {
  */
 
 // Mandatory elements.
-const footerElement = document.querySelector(".js-footer-nav-items");
-const footerToggle = document.querySelector(".js-footer-nav-toggle");
+const footerElement = document.querySelector(".js-secondary-nav-items");
+const footerToggle = document.querySelector(".js-secondary-nav-toggle");
 
 if ( footerElement && footerToggle ) {
     new Navigation(footerElement, footerToggle, {
-        subNavAnchors: ".js-footer-nav-items > .menu-item-has-children > a",
+        subNavAnchors: ".js-secondary-nav-items > .menu-item-has-children > a",
         subSubNavAnchors:
-            ".js-footer-nav-items .sub-menu > .menu-item-has-children > a",
+            ".js-secondary-nav-items .sub-menu > .menu-item-has-children > a",
         subToggleButtonClasses: "site-nav__sub-toggle",
         subSubToggleButtonClasses: "site-nav__sub-sub-toggle",
     });

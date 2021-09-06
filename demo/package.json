@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/navigation.js --bundle --outfile=dist/navigation.js"
+    "build": "esbuild src/navigation.js src/navigation-multiple.js --bundle --outdir=dist"
   },
   "author": "",
   "license": "ISC",

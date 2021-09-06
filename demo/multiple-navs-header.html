@@ -12,42 +12,71 @@
       <header class="site-header">
         <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
 
-        <nav class="site-nav site-nav--click js-site-nav" aria-label="Main">
+        <nav class="site-nav site-nav--click site-nav--multiple js-site-nav" aria-label="Main">
           <button
             class="site-nav__toggle js-site-nav-toggle"
-            aria-controls="site-nav__items"
+            aria-controls="site-nav__wrapper"
             aria-expanded="false"
           >
             Menu
           </button>
-          <ul class="site-nav__items animated js-site-nav-items" id="site-nav__items">
-            <li><a href="#">Home</a></li>
-            <li class="menu-item-has-children">
-              <a href="#">About</a>
-              <ul class="sub-menu">
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#">Company values</a></li>
-                <li><a href="#">Staff</a></li>
-                <li><a href="#">More info</a></li>
-              </ul>
-            </li>
-            <li class="menu-item-has-children">
-              <a href="#">Services</a>
-              <ul class="sub-menu">
-                <li><a href="#">Design</a></li>
-                <li><a href="#">WordPress</a></li>
-                <li class="menu-item-has-children"><a href="#">Hosting</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Premium</a></li>
-                        <li><a href="#">Even better</a></li>
-                        <li><a href="#">The fastest</a>
-                    </ul>
-                </li>
-                <li><a href="#">Helping</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Blog</a></li>
-          </ul>
+          <div class="site-nav__wrapper animated js-site-nav-wrapper" id="site-nav__wrapper">
+            <ul class="site-nav__items site-nav__items--main js-site-nav-items" id="site-nav__items">
+              <li><a href="#">Home</a></li>
+              <li class="menu-item-has-children">
+                <a href="#">About</a>
+                <ul class="sub-menu">
+                  <li><a href="#">Contact us</a></li>
+                  <li><a href="#">Company values</a></li>
+                  <li><a href="#">Staff</a></li>
+                  <li><a href="#">More info</a></li>
+                </ul>
+              </li>
+              <li class="menu-item-has-children">
+                <a href="#">Services</a>
+                <ul class="sub-menu">
+                  <li><a href="#">Design</a></li>
+                  <li><a href="#">WordPress</a></li>
+                  <li class="menu-item-has-children"><a href="#">Hosting</a>
+                      <ul class="sub-menu">
+                          <li><a href="#">Premium</a></li>
+                          <li><a href="#">Even better</a></li>
+                          <li><a href="#">The fastest</a>
+                      </ul>
+                  </li>
+                  <li><a href="#">Helping</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+
+            <button
+                class="site-nav__toggle site-nav__toggle--secondary js-secondary-nav-toggle"
+                aria-controls="secondary-nav__items"
+                aria-expanded="false"
+              >
+                Menu secondary
+            </button>
+            <ul class="site-nav__items site-nav__items--secondary js-secondary-nav-items" id="secondary-nav__items">
+              <li><a href="#">Home</a></li>
+              <li class="menu-item-has-children">
+                <a href="#">About</a>
+                <ul class="sub-menu">
+                  <li><a href="#">Contact us</a></li>
+                  <li><a href="#">Company values</a></li>
+                  <li><a href="#">Staff</a></li>
+                  <li><a href="#">More info</a></li>
+                </ul>
+              </li>
+              <li class="menu-item-has-children"><a href="#">Hosting</a>
+                <ul class="sub-menu">
+                    <li><a href="#">Premium</a></li>
+                    <li><a href="#">Even better</a></li>
+                    <li><a href="#">The fastest</a>
+                </ul>
+              </li>
+              <li><a href="#">Address</a></li>
+            </ul>
         </nav>
       </header>
 
@@ -79,39 +108,7 @@
         </article>
       </main>
 
-      <footer class="site-footer">
-        <nav class="site-nav site-nav--secondary js-secondary-nav" aria-label="Contact">
-          <button
-              class="site-nav__toggle site-nav__toggle--secondary js-secondary-nav-toggle"
-              aria-controls="secondary-nav__items"
-              aria-expanded="false"
-            >
-              Menu footer
-          </button>
-          <ul class="site-nav__items site-nav__items--secondary js-secondary-nav-items" id="secondary-nav__items">
-            <li><a href="#">Home</a></li>
-            <li class="menu-item-has-children">
-              <a href="#">About</a>
-              <ul class="sub-menu">
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#">Company values</a></li>
-                <li><a href="#">Staff</a></li>
-                <li><a href="#">More info</a></li>
-              </ul>
-            </li>
-            <li class="menu-item-has-children"><a href="#">Hosting</a>
-              <ul class="sub-menu">
-                  <li><a href="#">Premium</a></li>
-                  <li><a href="#">Even better</a></li>
-                  <li><a href="#">The fastest</a>
-              </ul>
-            </li>
-            <li><a href="#">Address</a></li>
-          </ul>
-        </nav>
-
-        <script src="dist/navigation.js"></script>
-      </footer>
-     </div>
+      <script src="dist/navigation-multiple.js"></script>
+    </div>
   </body>
 </html>
