@@ -3,6 +3,10 @@
     z-index: 400;
 }
 
+.site-nav__toggle--footer {
+    display: none;
+}
+
 .site-nav__toggle:focus {
     outline-color: var(--color-white);
     outline-offset: -4px;
@@ -40,6 +44,10 @@
         top: 0;
         z-index: 100;
     }
+}
+
+.site-nav__items--footer {
+    display: block;
 }
 
 @media (min-width: 50.001em) {

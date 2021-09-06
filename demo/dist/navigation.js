@@ -296,4 +296,14 @@
       animate(element, "fade-out", "is-opened");
     }
   });
+  var footerElement = document.querySelector(".js-footer-nav-items");
+  var footerToggle = document.querySelector(".js-footer-nav-toggle");
+  if (footerElement && footerToggle) {
+    new Navigation(footerElement, footerToggle, {
+      subNavAnchors: ".js-footer-nav-items > .menu-item-has-children > a",
+      subSubNavAnchors: ".js-footer-nav-items .sub-menu > .menu-item-has-children > a",
+      subToggleButtonClasses: "site-nav__sub-toggle",
+      subSubToggleButtonClasses: "site-nav__sub-sub-toggle"
+    });
+  }
 })();
