@@ -74,10 +74,6 @@
       const subToggleButton = document.createElement("button");
       subToggleButton.setAttribute("data-meom-nav", "sub-toggle");
       subToggleButton.setAttribute("aria-expanded", "false");
-      subToggleButton.setAttribute("aria-controls", `sub-menu-${index}`);
-      if (subNav.nextElementSibling) {
-        subNav.nextElementSibling.id = `sub-menu-${index}`;
-      }
       subToggleButton.className = `${this.settings.subToggleButtonClasses}`;
       subToggleButton.type = "button";
       if (this.settings.action === "click") {
