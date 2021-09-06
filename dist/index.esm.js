@@ -143,12 +143,6 @@ Navigation.prototype.create = function () {
         subToggleButton.setAttribute( 'data-meom-nav', 'sub-toggle' );
         subToggleButton.setAttribute( 'aria-expanded', 'false' );
 
-        subToggleButton.setAttribute( 'aria-controls', `sub-menu-${ index }` );
-        // Add matching id for next sub-menu.
-        if ( subNav.nextElementSibling ) {
-            subNav.nextElementSibling.id = `sub-menu-${ index }`;
-        }
-
         subToggleButton.className = `${ this.settings.subToggleButtonClasses }`;
         subToggleButton.type = 'button';
 

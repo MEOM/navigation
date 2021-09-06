@@ -128,7 +128,7 @@ We don't add `hidden` attribute in this case to the link. And `<button>` text is
 ### Other features
 - Close navigation and sub menus by `Esc` key or by clicking outside of the navigation.
 - Use `aria-expanded` on buttons to indicate state.
-- Use `aria-controls` to point which element (matching id) it is opening.
+- `aria-controls` is not really supported in assistive tecnology, therefor this is not implemented.
 
 ## More reading about navigations
 - [Link + Disclosure Widget Navigation](https://adrianroselli.com/2019/06/link-disclosure-widget-navigation.html) by Adrian Roselli.
