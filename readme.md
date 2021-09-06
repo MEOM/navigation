@@ -11,6 +11,7 @@ It's designed for WordPress navigation markup but can be tweaked for different u
 ## Demos
 - ["Click" Demo](https://meom.github.io/navigation/demo/).
 - ["Hover" Demo](https://meom.github.io/navigation/demo/hover.html).
+- [Multiple navs Demo](https://meom.github.io/navigation/demo/multiple-navs.html).
 
 ## Usage
 
