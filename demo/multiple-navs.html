@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="src/main.css" rel="stylesheet" />
+    <link href="src/site-nav.css" rel="stylesheet" />
+    <title>Navigation demo</title>
+  </head>
+  <body>
+    <div class="site">
+      <header class="site-header">
+        <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+
+        <nav class="site-nav site-nav--click js-site-nav" aria-label="Main">
+          <button
+            class="site-nav__toggle js-site-nav-toggle"
+            aria-controls="site-nav__items"
+            aria-expanded="false"
+          >
+            Menu
+          </button>
+          <ul class="site-nav__items animated js-site-nav-items" id="site-nav__items">
+            <li><a href="#">Home</a></li>
+            <li class="menu-item-has-children">
+              <a href="#">About</a>
+              <ul class="sub-menu">
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Company values</a></li>
+                <li><a href="#">Staff</a></li>
+                <li><a href="#">More info</a></li>
+              </ul>
+            </li>
+            <li class="menu-item-has-children">
+              <a href="#">Services</a>
+              <ul class="sub-menu">
+                <li><a href="#">Design</a></li>
+                <li><a href="#">WordPress</a></li>
+                <li class="menu-item-has-children"><a href="#">Hosting</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Premium</a></li>
+                        <li><a href="#">Even better</a></li>
+                        <li><a href="#">The fastest</a>
+                    </ul>
+                </li>
+                <li><a href="#">Helping</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main id="main" class="site-main">
+        <article class="entry">
+          <div class="entry__content flow-spacing">
+            <h1>Navigation demo</h1>
+            <p>
+              This is navigation demo for the
+              <a href="https://github.com/MEOM/navigation">MEOM navigation</a>.
+            </p>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Phasellus egestas tellus rutrum tellus. Facilisi morbi tempus iaculis urna id. Condimentum id venenatis a condimentum vitae sapien pellentesque habitant. Faucibus et molestie ac feugiat sed lectus vestibulum. Et magnis dis parturient montes nascetur ridiculus mus. Massa enim nec dui nunc. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Urna id volutpat lacus laoreet non curabitur gravida arcu ac. Sodales ut eu sem integer vitae. Bibendum enim facilisis gravida neque convallis a cras semper. Urna et pharetra pharetra massa massa ultricies mi. Orci nulla pellentesque dignissim enim sit. Condimentum lacinia quis vel eros donec ac odio tempor. Eget aliquet nibh praesent tristique magna sit amet purus gravida.
+            </p>
+            <p>
+              Ut sem viverra aliquet eget. Leo a diam sollicitudin tempor id eu nisl nunc mi. Odio aenean sed adipiscing diam donec adipiscing tristique. Magna etiam tempor orci eu lobortis elementum. In nisl nisi scelerisque eu ultrices vitae auctor. Cras pulvinar mattis nunc sed. Faucibus vitae aliquet nec ullamcorper sit. Elit at imperdiet dui accumsan sit amet. Dignissim sodales ut eu sem integer vitae justo. Arcu risus quis varius quam quisque id diam. Et tortor at risus viverra. Faucibus nisl tincidunt eget nullam non nisi.
+            </p>
+            <p>
+              Urna neque viverra justo nec ultrices dui. Facilisi nullam vehicula ipsum a arcu. Adipiscing vitae proin sagittis nisl. Nisl suscipit adipiscing bibendum est ultricies. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Vitae semper quis lectus nulla at volutpat diam ut venenatis. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida. Leo urna molestie at elementum eu. Bibendum est ultricies integer quis auctor elit. Pharetra convallis posuere morbi leo urna. Ipsum faucibus vitae aliquet nec ullamcorper sit amet risus nullam. Tincidunt arcu non sodales neque sodales ut etiam sit amet. Sit amet consectetur adipiscing elit ut aliquam purus sit.
+            </p>
+            <p>
+              Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit. Sed felis eget velit aliquet sagittis id consectetur. Leo vel orci porta non pulvinar. Enim tortor at auctor urna nunc id cursus metus aliquam. Non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Diam sollicitudin tempor id eu nisl nunc mi. Nulla aliquet enim tortor at. Sed risus pretium quam vulputate. Suspendisse interdum consectetur libero id faucibus nisl tincidunt eget nullam. Vel risus commodo viverra maecenas. Quis eleifend quam adipiscing vitae proin sagittis nisl. Arcu non sodales neque sodales ut etiam sit. Risus quis varius quam quisque id. Adipiscing elit ut aliquam purus sit. Quam elementum pulvinar etiam non quam lacus.
+            </p>
+            <p>
+            Sit amet facilisis magna etiam. Enim sed faucibus turpis in eu. Nulla aliquet porttitor lacus luctus. Aliquam eleifend mi in nulla posuere sollicitudin aliquam. Velit dignissim sodales ut eu sem integer. Leo in vitae turpis massa sed elementum. Est lorem ipsum dolor sit amet consectetur adipiscing elit. Dictum varius duis at consectetur. Faucibus scelerisque eleifend donec pretium. Enim neque volutpat ac tincidunt. Dignissim sodales ut eu sem integer.
+            </p>
+          </div>
+        </article>
+      </main>
+
+      <footer class="site-footer">
+        <nav class="site-nav site-nav--footer js-footer-nav" aria-label="Contact">
+          <button
+              class="site-nav__toggle site-nav__toggle--footer js-footer-nav-toggle"
+              aria-controls="footer-nav__items"
+              aria-expanded="false"
+            >
+              Menu footer
+          </button>
+          <ul class="site-nav__items site-nav__items--footer js-footer-nav-items" id="footer-nav__items">
+            <li><a href="#">Home</a></li>
+            <li class="menu-item-has-children">
+              <a href="#">About</a>
+              <ul class="sub-menu">
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Company values</a></li>
+                <li><a href="#">Staff</a></li>
+                <li><a href="#">More info</a></li>
+              </ul>
+            </li>
+            <li class="menu-item-has-children"><a href="#">Hosting</a>
+              <ul class="sub-menu">
+                  <li><a href="#">Premium</a></li>
+                  <li><a href="#">Even better</a></li>
+                  <li><a href="#">The fastest</a>
+              </ul>
+            </li>
+            <li><a href="#">Address</a></li>
+          </ul>
+        </nav>
+
+        <script src="dist/navigation.js"></script>
+      </footer>
+     </div>
+  </body>
+</html>

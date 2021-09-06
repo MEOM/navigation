@@ -12,6 +12,6 @@
     "@meom/navigation": "file:../../navigation"
   },
   "devDependencies": {
-    "esbuild": "^0.12.20"
+    "esbuild": "^0.12.25"
   }
 }
