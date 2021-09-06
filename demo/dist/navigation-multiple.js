@@ -268,14 +268,12 @@
     return this;
   };
 
-  // src/navigation.js
-  var navElement = document.querySelector(".js-site-nav-items");
+  // src/navigation-multiple.js
+  var navElement = document.querySelector(".js-site-nav-wrapper");
   var navToggle = document.querySelector(".js-site-nav-toggle");
-  var isHoverDemo = document.querySelector(".js-site-nav-hover");
   new Navigation(navElement, navToggle, {
-    action: isHoverDemo ? "hover" : "click",
-    subNavAnchors: ".js-site-nav-items > .menu-item-has-children > a",
-    subSubNavAnchors: ".js-site-nav-items .sub-menu > .menu-item-has-children > a",
+    subNavAnchors: ".js-site-nav-wrapper > ul > .menu-item-has-children > a",
+    subSubNavAnchors: ".js-site-nav-wrapper .sub-menu > .menu-item-has-children > a",
     subToggleButtonClasses: "site-nav__sub-toggle",
     subSubToggleButtonClasses: "site-nav__sub-sub-toggle",
     toggleNavClass: false,
@@ -292,14 +290,4 @@
       animate(element, "fade-out", "is-opened");
     }
   });
-  var footerElement = document.querySelector(".js-secondary-nav-items");
-  var footerToggle = document.querySelector(".js-secondary-nav-toggle");
-  if (footerElement && footerToggle) {
-    new Navigation(footerElement, footerToggle, {
-      subNavAnchors: ".js-secondary-nav-items > .menu-item-has-children > a",
-      subSubNavAnchors: ".js-secondary-nav-items .sub-menu > .menu-item-has-children > a",
-      subToggleButtonClasses: "site-nav__sub-toggle",
-      subSubToggleButtonClasses: "site-nav__sub-sub-toggle"
-    });
-  }
 })();
