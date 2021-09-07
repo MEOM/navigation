@@ -1,4 +1,10 @@
 # Changelog
+## Version 0.4.0 released November 7, 2021
+### Updated
+- Documentation.
+
+## Added
+- Two new demos with multiple navs.
 
 ## Version 0.3.0 released November 1, 2021
 ### Added
