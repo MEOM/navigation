@@ -66,13 +66,13 @@ function Navigation( element, toggle, options = {} ) {
     // Default settings.
     const defaults = {
         action: 'click',
+        subNavAnchors: '.js-site-nav-items > .menu-item-has-children > a',
+        subSubNavAnchors: '.js-site-nav-items .sub-menu > .menu-item-has-children > a',
         toggleNavClass: true,
         toggleNavClassValue: 'is-opened',
         toggleSubNavClassValue: 'is-opened',
         closeNavOnEscKey: true,
         closeNavOnLastTab: false,
-        subNavAnchors: '.menu-item-has-children.is-item-level-0 > a',
-        subSubNavAnchors: 'ul .menu-item-has-children > a',
         subNavClass: '.sub-menu',
         subToggleButtonClasses: '',
         subSubToggleButtonClasses: '',
