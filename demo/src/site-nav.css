@@ -193,8 +193,9 @@
     }
 }
 
-.site-nav__sub-toggle svg {
-    transition: transform 0.3s;
+.site-nav__sub-toggle svg,
+.site-nav__sub-sub-toggle svg {
+    pointer-events: none;
 }
 
 @media (min-width: 50.001em) {
