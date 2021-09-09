@@ -196,6 +196,7 @@
 .site-nav__sub-toggle svg,
 .site-nav__sub-sub-toggle svg {
     pointer-events: none;
+    transition: transform 0.3s;
 }
 
 @media (min-width: 50.001em) {
@@ -208,6 +209,7 @@
     }
 }
 
-.site-nav__sub-toggle[aria-expanded="true"] svg {
+.site-nav__sub-toggle[aria-expanded="true"] svg,
+.site-nav__sub-sub-toggle[aria-expanded="true"] svg {
     transform: rotate(-180deg);
 }
