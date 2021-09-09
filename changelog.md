@@ -1,4 +1,8 @@
 # Changelog
+## Version 1.0.0 released November 9, 2021
+Version 1.0.0 has landed!
+### Updated
+- Default SVG caret icon.
 ## Version 0.4.0 released November 7, 2021
 ### Updated
 - Documentation.

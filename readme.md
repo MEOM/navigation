@@ -1,16 +1,17 @@
 # MEOM navigation
 
-MEOM navigation component is work in progress. It gives head start for two types of
+MEOM navigation gives head start for two types of
 navigations:
 
 1. "Click" navigation where sub menus open only on click.
-1. "Hover" navigation where sub menus open on hover also. Note that we don't actually open sub menus on hover in the demo. That's because we don't have the logic to close sub menus with Esc-key if they are opened with mouse hover. That's up to you.
+1. "Hover" navigation where sub menus open on hover also.
 
 It's designed for WordPress navigation markup but can be tweaked for different use cases.
 
 ## Demos
 - ["Click" Demo](https://meom.github.io/navigation/demo/).
 - ["Hover" Demo](https://meom.github.io/navigation/demo/hover.html).
+ - Note that we don't actually open sub menus on hover in the demo. That's because we don't have the logic to close sub menus with Esc-key if they are opened with mouse hover. That's up to you.
 - [Multiple navs Demo](https://meom.github.io/navigation/demo/multiple-navs-header.html).
 - [Header and Footer navs](https://meom.github.io/navigation/demo/multiple-navs.html).
 
@@ -312,3 +313,4 @@ We don't add `hidden` attribute in this case to the link. And `<button>` text is
 ## More reading about navigations
 - [Link + Disclosure Widget Navigation](https://adrianroselli.com/2019/06/link-disclosure-widget-navigation.html) by Adrian Roselli.
 - [In Praise of the Unambiguous Click Menu](https://css-tricks.com/in-praise-of-the-unambiguous-click-menu/) by Mark Root-Wiley.
+- [In Finnish: How to build accessible navigation](https://www.eficode.com/fi/blog/miten-navigaatiovalikko-toteutetaan-saavutettavasti).
