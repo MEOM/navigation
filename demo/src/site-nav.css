@@ -133,6 +133,17 @@
     }
 }
 
+@media (min-width: 50em) {
+    .site-nav--hover .site-nav__sub-toggle {
+        margin-left: 0.2em;
+    }
+
+    .site-nav--hover .site-nav__sub-toggle svg {
+        margin-left: 0;
+        vertical-align: top;
+    }
+}
+
 .site-nav__sub-sub-toggle {
     padding: var(--spacing) 0 var(--spacing) var(--spacing);
     position: absolute;

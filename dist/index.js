@@ -86,9 +86,7 @@
             animateSubNavClass: '',
             visuallyHiddenClass: 'screen-reader-text',
             expandChildNavText: 'Sub menu',
-            dropDownIcon:
-                '<svg class="icon" aria-hidden="true" focusable="false" width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.793 4.793a1 1 0 001.414 0L12 1" stroke-width="2" stroke-linecap="round"></path></svg>',
-
+            dropDownIcon: '<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M17.5 11.6L12 16l-5.5-4.4.9-1.2L12 14l4.5-3.6 1 1.2z"></path></svg>',
             onCreate: null,
             onOpenNav: null,
             onCloseNav: null,
