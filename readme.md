@@ -312,3 +312,4 @@ We don't add `hidden` attribute in this case to the link. And `<button>` text is
 ## More reading about navigations
 - [Link + Disclosure Widget Navigation](https://adrianroselli.com/2019/06/link-disclosure-widget-navigation.html) by Adrian Roselli.
 - [In Praise of the Unambiguous Click Menu](https://css-tricks.com/in-praise-of-the-unambiguous-click-menu/) by Mark Root-Wiley.
+- [In Finnish: How to build accessible navigation](https://www.eficode.com/fi/blog/miten-navigaatiovalikko-toteutetaan-saavutettavasti).
