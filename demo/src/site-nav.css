@@ -193,7 +193,9 @@
     }
 }
 
-.site-nav__sub-toggle svg {
+.site-nav__sub-toggle svg,
+.site-nav__sub-sub-toggle svg {
+    pointer-events: none;
     transition: transform 0.3s;
 }
 
@@ -207,6 +209,7 @@
     }
 }
 
-.site-nav__sub-toggle[aria-expanded="true"] svg {
+.site-nav__sub-toggle[aria-expanded="true"] svg,
+.site-nav__sub-sub-toggle[aria-expanded="true"] svg {
     transform: rotate(-180deg);
 }

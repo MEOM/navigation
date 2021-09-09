@@ -1,4 +1,7 @@
 # Changelog
+## Version 1.0.1 released November 9, 2021
+### Fixed
+- Use `pointer-event: none`in SVG caret icon to be able to click it.
 ## Version 1.0.0 released November 9, 2021
 Version 1.0.0 has landed!
 ### Updated
