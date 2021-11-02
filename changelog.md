@@ -1,19 +1,23 @@
 # Changelog
-## Version 1.0.1 released November 9, 2021
+## Version 1.0.2 released November 2, 2021
+### Added
+- Demo for language dropdown.
+
+## Version 1.0.1 released September 9, 2021
 ### Fixed
 - Use `pointer-event: none`in SVG caret icon to be able to click it.
-## Version 1.0.0 released November 9, 2021
+## Version 1.0.0 released September 9, 2021
 Version 1.0.0 has landed!
 ### Updated
 - Default SVG caret icon.
-## Version 0.4.0 released November 7, 2021
+## Version 0.4.0 released September 7, 2021
 ### Updated
 - Documentation.
 
 ## Added
 - Two new demos with multiple navs.
 
-## Version 0.3.0 released November 1, 2021
+## Version 0.3.0 released September 1, 2021
 ### Added
 - Demo examples.
 
