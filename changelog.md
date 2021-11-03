@@ -1,4 +1,7 @@
 # Changelog
+## Version 1.0.3 released November 3, 2021
+### Added
+- Note about `pointer-events: none;` CSS needed for the SVG icons.
 ## Version 1.0.2 released November 2, 2021
 ### Added
 - Demo for language dropdown.

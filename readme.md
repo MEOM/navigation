@@ -114,6 +114,22 @@ if (!navElement || !navToggle) {
 new Navigation(navElement, navToggle);
 ```
 
+## Issues opening and closing the sub menus?
+First try adding `pointer-events: none;` CSS to SVG icon inside the sub menu toggles.
+
+For example:
+
+```css
+.site-nav__sub-toggle svg,
+.site-nav__sub-sub-toggle svg {
+    pointer-events: none;
+}
+```
+
+This prevents SVG icon being the clicked target element. In other words it should always the `<button>` itself. 
+
+Hopefully this will be fixed in the JS at some point.
+
 ## Options
 
 There are several settings (object) which you can pass in as third argument:
