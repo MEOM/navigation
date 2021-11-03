@@ -126,7 +126,7 @@ For example:
 }
 ```
 
-This prevents SVG icon being the clicked target element. In other words it should always the `<button>` itself. 
+This prevents SVG icon being the clicked target element. In other words it should always be the `<button>` itself. 
 
 Hopefully this will be fixed in the JS at some point.
 
