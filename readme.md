@@ -15,6 +15,7 @@ It's designed for WordPress navigation markup but can be tweaked for different u
 - [Multiple navs Demo](https://meom.github.io/navigation/demo/multiple-navs-header.html).
 - [Header and Footer navs](https://meom.github.io/navigation/demo/multiple-navs.html).
 - [Language nav as dropdown](https://meom.github.io/navigation/demo/lang-button.html).
+- [buttons as dropdown](https://meom.github.io/navigation/demo/buttons.html). Like on previous example we can write `<button data-meom-nav="sub-toggle" aria-expanded="false" type="button">` element directly in the markup.
 
 ## Usage
 
@@ -71,25 +72,25 @@ Recommended markup is using landmark `nav` with list of links.
         <li class="menu-item-has-children">
             <a href="#">About</a>
             <ul class="sub-menu">
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">Company values</a></li>
-            <li><a href="#">Staff</a></li>
-            <li><a href="#">More info</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Company values</a></li>
+                <li><a href="#">Staff</a></li>
+                <li><a href="#">More info</a></li>
             </ul>
         </li>
         <li class="menu-item-has-children">
             <a href="#">Services</a>
             <ul class="sub-menu">
-            <li><a href="#">Design</a></li>
-            <li><a href="#">WordPress</a></li>
-            <li class="menu-item-has-children"><a href="#">Hosting</a>
-                <ul class="sub-menu">
-                    <li><a href="#">Premium</a></li>
-                    <li><a href="#">Even better</a></li>
-                    <li><a href="#">The fastest</a>
-                </ul>
-            </li>
-            <li><a href="#">Helping</a></li>
+                <li><a href="#">Design</a></li>
+                <li><a href="#">WordPress</a></li>
+                <li class="menu-item-has-children"><a href="#">Hosting</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Premium</a></li>
+                        <li><a href="#">Even better</a></li>
+                        <li><a href="#">The fastest</a>
+                    </ul>
+                </li>
+                <li><a href="#">Helping</a></li>
             </ul>
         </li>
         <li><a href="#">Blog</a></li>
@@ -112,6 +113,55 @@ if (!navElement || !navToggle) {
 }
 
 new Navigation(navElement, navToggle);
+```
+
+### Markup with your own `<button>` elements
+
+You can use `<button data-meom-nav="sub-toggle" aria-expanded="false" type="button">` for dropdowns elements directly in the markup without top level anchors. Note the mandatory attributes:
+
+- `data-meom-nav="sub-toggle"`
+- `aria-expanded="false"`
+- `type="button"`
+
+Markup would look like this:
+
+```html
+<nav class="site-nav js-site-nav">
+    <button
+    class="site-nav__toggle js-site-nav-toggle" aria-controls="site-nav__items"
+    aria-expanded="false"
+    >
+    Menu
+    </button>
+    <ul class="site-nav__items js-site-nav-items" id="site-nav__items">
+        <li><a href="#">Home</a></li>
+        <li class="menu-item-has-children">
+            <button class="site-nav__sub-toggle" data-meom-nav="sub-toggle" aria-expanded="false" type="button">About</button>
+            <ul class="sub-menu">
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Company values</a></li>
+                <li><a href="#">Staff</a></li>
+                <li><a href="#">More info</a></li>
+            </ul>
+        </li>
+        <li class="menu-item-has-children">
+            <button class="site-nav__sub-toggle" data-meom-nav="sub-toggle" aria-expanded="false" type="button">Services</button>
+            <ul class="sub-menu">
+                <li><a href="#">Design</a></li>
+                <li><a href="#">WordPress</a></li>
+                <li class="menu-item-has-children"><a href="#">Hosting</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Premium</a></li>
+                        <li><a href="#">Even better</a></li>
+                        <li><a href="#">The fastest</a>
+                    </ul>
+                </li>
+                <li><a href="#">Helping</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Blog</a></li>
+    </ul>
+</nav>
 ```
 
 ## Issues opening and closing the sub menus?
