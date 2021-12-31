@@ -1,4 +1,7 @@
 # Changelog
+## Version 1.0.4 released December 31, 2021
+### Added
+- New demo about using buttons as dropdowns.
 ## Version 1.0.3 released November 3, 2021
 ### Added
 - Note about `pointer-events: none;` CSS needed for the SVG icons.
