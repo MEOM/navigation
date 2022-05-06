@@ -1,0 +1,17 @@
+@media (min-width: 50.001em) {
+    .site-nav__items li:hover > .sub-menu {
+        background-color: var(--color-white);
+        left: 0;
+        opacity: 1;
+        padding: 0;
+        position: absolute;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    .site-nav__items ul li:hover > .sub-menu {
+        left: auto;
+        right: -100%;
+        top: 0;
+    }
+}

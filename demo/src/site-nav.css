@@ -104,6 +104,13 @@
     display: block;
 }
 
+@media (min-width: 50.001em) {
+    .sub-menu a {
+        padding-left: var(--spacing-2x);
+        padding-right: var(--spacing-2x);
+    }
+}
+
 .site-nav__items a:hover,
 .site-nav__items a:active,
 .site-nav__items a:focus,
@@ -145,7 +152,7 @@
 }
 
 .site-nav__sub-sub-toggle {
-    padding: var(--spacing) 0 var(--spacing) var(--spacing);
+    padding: var(--spacing);
     position: absolute;
     right: 0;
     top: 0;
@@ -181,14 +188,13 @@
 @media (min-width: 50.001em) {
     [aria-expanded="true"] + .sub-menu {
         background-color: var(--color-white);
-        padding: var(--spacing-2x);
+        padding: 0;
         position: absolute;
     }
 
     .sub-menu [aria-expanded="true"] + .sub-menu {
         left: auto;
-        /* Account paddings*/
-        right: calc(-100% - var(--spacing-2x) * 3);
+        right: -100%;
         top: 0;
     }
 }
