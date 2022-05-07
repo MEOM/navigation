@@ -11,7 +11,7 @@ It's designed for WordPress navigation markup but can be tweaked for different u
 ## Demos
 - ["Click" Demo](https://meom.github.io/navigation/demo/).
 - ["Hover" Demo](https://meom.github.io/navigation/demo/hover.html).
- - Note that we don't actually open sub menus on hover in the demo. That's because we don't have the logic to close sub menus with Esc-key if they are opened with mouse hover. That's up to you.
+ - Note that we don't have the logic to close sub menus with Esc-key if they are opened with mouse hover. That's violation against [WCAG 1.4.12](https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus).
 - [Multiple navs Demo](https://meom.github.io/navigation/demo/multiple-navs-header.html).
 - [Header and Footer navs](https://meom.github.io/navigation/demo/multiple-navs.html).
 - [Language nav as dropdown](https://meom.github.io/navigation/demo/lang-button.html).

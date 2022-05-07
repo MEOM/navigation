@@ -1,4 +1,7 @@
 # Changelog
+## Version 1.0.5 released May 7, 2022
+- Added `:hover` to sub menus in hover demo.
+- Updated NPM packages.
 ## Version 1.0.4 released December 31, 2021
 ### Added
 - New demo about using buttons as dropdowns.

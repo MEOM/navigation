@@ -1,6 +1,6 @@
 {
   "name": "@meom/navigation",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "MEOM navigation",
   "homepage": "https://github.com/MEOM/navigation",
   "repository": {
@@ -22,12 +22,12 @@
   "author": "MEOM",
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^19.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.1",
-    "@wordpress/eslint-plugin": "^9.0.6",
-    "@wordpress/prettier-config": "^1.0.5",
-    "eslint": "^7.30.0",
-    "rollup": "^2.53.2",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@wordpress/eslint-plugin": "^12.2.0",
+    "@wordpress/prettier-config": "^1.2.0",
+    "eslint": "^8.15.0",
+    "rollup": "^2.72.0",
     "rollup-plugin-terser": "^7.0.2"
   }
 }
