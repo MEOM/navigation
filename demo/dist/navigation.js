@@ -51,8 +51,10 @@
     this._handleCloseNav = this.handleCloseNav.bind(this);
     this._handleCloseSubNav = this.handleCloseSubNav.bind(this);
     this._closeAllSubMenus = this.closeAllSubMenus.bind(this);
+    this._closeAllSubSubMenus = this.closeAllSubSubMenus.bind(this);
     this._setSubMenu = this.setSubMenu.bind(this);
     this._closeAllSubMenuToggles = this.closeAllSubMenuToggles.bind(this);
+    this._closeAllSubSubMenuToggles = this.closeAllSubSubMenuToggles.bind(this);
     this._handleDocClick = this.handleDocClick.bind(this);
     this._handleFocus = this.handleFocus.bind(this);
     const settings = { ...defaults, ...options };
@@ -67,7 +69,7 @@
   Navigation.prototype.create = function() {
     this.$toggle.setAttribute("aria-expanded", "false");
     this.$element.setAttribute("data-meom-nav", "navigation");
-    this.$subNavs.forEach(function(subNav, index) {
+    this.$subNavs.forEach(function(subNav) {
       if (this.settings.action === "click") {
         subNav.setAttribute("hidden", "");
       }
@@ -145,6 +147,10 @@
     if (!target.nextElementSibling.classList.contains(this.settings.toggleSubNavClassValue) && !target.matches('[data-meom-nav="sub-sub-toggle"]')) {
       this._closeAllSubMenus();
       this._closeAllSubMenuToggles();
+    }
+    if (!target.nextElementSibling.classList.contains(this.settings.toggleSubNavClassValue) && target.matches('[data-meom-nav="sub-sub-toggle"]')) {
+      this._closeAllSubSubMenus();
+      this._closeAllSubSubMenuToggles();
     }
     updateAria(target, "expanded");
     if (target.nextElementSibling) {
@@ -236,6 +242,13 @@
     }, this);
     return this;
   };
+  Navigation.prototype.closeAllSubSubMenus = function() {
+    const openSubSubMenus = document.querySelectorAll(`${this.settings.subNavClass} ${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`);
+    openSubSubMenus.forEach(function(openSubSubMenu) {
+      this._setSubMenu(openSubSubMenu);
+    }, this);
+    return this;
+  };
   Navigation.prototype.setSubMenu = function(submenu, event) {
     if (!submenu) {
       return this;
@@ -261,6 +274,13 @@
     openSubMenuToggles.forEach(function(openSubMenuToggle) {
       updateAria(openSubMenuToggle, "expanded");
     });
+    const openSubSubMenuToggles = document.querySelectorAll('[data-meom-nav="sub-sub-toggle"][aria-expanded="true"]');
+    openSubSubMenuToggles.forEach(function(openSubSubMenuToggle) {
+      updateAria(openSubSubMenuToggle, "expanded");
+    });
+    return this;
+  };
+  Navigation.prototype.closeAllSubSubMenuToggles = function() {
     const openSubSubMenuToggles = document.querySelectorAll('[data-meom-nav="sub-sub-toggle"][aria-expanded="true"]');
     openSubSubMenuToggles.forEach(function(openSubSubMenuToggle) {
       updateAria(openSubSubMenuToggle, "expanded");
