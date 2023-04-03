@@ -1,4 +1,7 @@
 # Changelog
+## Version 1.1.0 released April 3, 2023
+- Fixed: show only one sub sub menu open at once.
+- Updated NPM packages.
 ## Version 1.0.5 released May 7, 2022
 - Added `:hover` to sub menus in hover demo.
 - Updated NPM packages.

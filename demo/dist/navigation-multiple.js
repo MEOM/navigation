@@ -5,19 +5,23 @@
       return;
     }
     elem.classList.add(animation);
-    elem.addEventListener("animationend", function endAnimation() {
-      elem.classList.remove(animation);
-      if (hide) {
-        elem.classList.remove(hide);
-      }
-      elem.removeEventListener("animationend", endAnimation, false);
-    }, false);
+    elem.addEventListener(
+      "animationend",
+      function endAnimation() {
+        elem.classList.remove(animation);
+        if (hide) {
+          elem.classList.remove(hide);
+        }
+        elem.removeEventListener("animationend", endAnimation, false);
+      },
+      false
+    );
   }
   function updateAria(el, aria) {
-    if (typeof el === "undefined" || 0 >= aria.length) {
+    if ("undefined" === typeof el || 0 >= aria.length) {
       return;
     }
-    const hiddenEl = el.getAttribute(`aria-${aria}`) === "true" ? "false" : "true";
+    const hiddenEl = "true" === el.getAttribute(`aria-${aria}`) ? "false" : "true";
     el.setAttribute(`aria-${aria}`, hiddenEl);
   }
   var TAB_KEY = 9;
@@ -51,8 +55,10 @@
     this._handleCloseNav = this.handleCloseNav.bind(this);
     this._handleCloseSubNav = this.handleCloseSubNav.bind(this);
     this._closeAllSubMenus = this.closeAllSubMenus.bind(this);
+    this._closeAllSubSubMenus = this.closeAllSubSubMenus.bind(this);
     this._setSubMenu = this.setSubMenu.bind(this);
     this._closeAllSubMenuToggles = this.closeAllSubMenuToggles.bind(this);
+    this._closeAllSubSubMenuToggles = this.closeAllSubSubMenuToggles.bind(this);
     this._handleDocClick = this.handleDocClick.bind(this);
     this._handleFocus = this.handleFocus.bind(this);
     const settings = { ...defaults, ...options };
@@ -61,13 +67,15 @@
     this.settings = settings;
     this.navOpened = false;
     this.$subNavs = this.$element.querySelectorAll(this.settings.subNavAnchors);
-    this.$subSubNavs = this.$element.querySelectorAll(this.settings.subSubNavAnchors);
+    this.$subSubNavs = this.$element.querySelectorAll(
+      this.settings.subSubNavAnchors
+    );
     this.create();
   }
   Navigation.prototype.create = function() {
     this.$toggle.setAttribute("aria-expanded", "false");
     this.$element.setAttribute("data-meom-nav", "navigation");
-    this.$subNavs.forEach(function(subNav, index) {
+    this.$subNavs.forEach(function(subNav) {
       if (this.settings.action === "click") {
         subNav.setAttribute("hidden", "");
       }
@@ -138,13 +146,23 @@
   Navigation.prototype.handleSubNav = function(event) {
     const target = event.target;
     const closestSubButton = target.closest('[data-meom-nav="sub-toggle"]');
-    const closestSubSubButton = target.closest('[data-meom-nav="sub-sub-toggle"]');
+    const closestSubSubButton = target.closest(
+      '[data-meom-nav="sub-sub-toggle"]'
+    );
     if (!closestSubButton && !closestSubSubButton) {
       return this;
     }
-    if (!target.nextElementSibling.classList.contains(this.settings.toggleSubNavClassValue) && !target.matches('[data-meom-nav="sub-sub-toggle"]')) {
+    if (!target.nextElementSibling.classList.contains(
+      this.settings.toggleSubNavClassValue
+    ) && !target.matches('[data-meom-nav="sub-sub-toggle"]')) {
       this._closeAllSubMenus();
       this._closeAllSubMenuToggles();
+    }
+    if (!target.nextElementSibling.classList.contains(
+      this.settings.toggleSubNavClassValue
+    ) && target.matches('[data-meom-nav="sub-sub-toggle"]')) {
+      this._closeAllSubSubMenus();
+      this._closeAllSubSubMenuToggles();
     }
     updateAria(target, "expanded");
     if (target.nextElementSibling) {
@@ -159,7 +177,9 @@
     return this;
   };
   Navigation.prototype.handleCloseSubNav = function(event) {
-    const openSubMenu = document.querySelector(`${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`);
+    const openSubMenu = document.querySelector(
+      `${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
+    );
     if (openSubMenu) {
       const focusableElements = openSubMenu.querySelectorAll([
         "a[href]",
@@ -181,13 +201,17 @@
       }
     }
     if (ESCAPE_KEY === event.keyCode) {
-      if (event.target.matches('[data-meom-nav="sub-toggle"][aria-expanded="true"]')) {
+      if (event.target.matches(
+        '[data-meom-nav="sub-toggle"][aria-expanded="true"]'
+      )) {
         this._handleSubNav(event);
         this._closeAllSubMenus();
         this._closeAllSubMenuToggles();
         return this;
       }
-      const parentSubMenu = event.target.closest(`${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`);
+      const parentSubMenu = event.target.closest(
+        `${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
+      );
       if (parentSubMenu) {
         const subMenuToggle = parentSubMenu.previousElementSibling;
         if (subMenuToggle) {
@@ -230,9 +254,20 @@
     return this;
   };
   Navigation.prototype.closeAllSubMenus = function() {
-    const openSubMenus = document.querySelectorAll(`${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`);
+    const openSubMenus = document.querySelectorAll(
+      `${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
+    );
     openSubMenus.forEach(function(openSubMenu) {
       this._setSubMenu(openSubMenu);
+    }, this);
+    return this;
+  };
+  Navigation.prototype.closeAllSubSubMenus = function() {
+    const openSubSubMenus = document.querySelectorAll(
+      `${this.settings.subNavClass} ${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
+    );
+    openSubSubMenus.forEach(function(openSubSubMenu) {
+      this._setSubMenu(openSubSubMenu);
     }, this);
     return this;
   };
@@ -246,22 +281,45 @@
         animate(submenu, this.settings.animateSubNavClass);
       }
       if (this.settings.onOpenSubNav && typeof this.settings.onOpenSubNav === "function") {
-        this.settings.onOpenSubNav(this.$element, this.$toggle, submenu, event);
+        this.settings.onOpenSubNav(
+          this.$element,
+          this.$toggle,
+          submenu,
+          event
+        );
       }
     } else {
       submenu.classList.remove(this.settings.toggleSubNavClassValue);
       if (this.settings.onCloseSubNav && typeof this.settings.onCloseSubNav === "function") {
-        this.settings.onCloseSubNav(this.$element, this.$toggle, submenu, event);
+        this.settings.onCloseSubNav(
+          this.$element,
+          this.$toggle,
+          submenu,
+          event
+        );
       }
     }
     return this;
   };
   Navigation.prototype.closeAllSubMenuToggles = function() {
-    const openSubMenuToggles = document.querySelectorAll('[data-meom-nav="sub-toggle"][aria-expanded="true"]');
+    const openSubMenuToggles = document.querySelectorAll(
+      '[data-meom-nav="sub-toggle"][aria-expanded="true"]'
+    );
     openSubMenuToggles.forEach(function(openSubMenuToggle) {
       updateAria(openSubMenuToggle, "expanded");
     });
-    const openSubSubMenuToggles = document.querySelectorAll('[data-meom-nav="sub-sub-toggle"][aria-expanded="true"]');
+    const openSubSubMenuToggles = document.querySelectorAll(
+      '[data-meom-nav="sub-sub-toggle"][aria-expanded="true"]'
+    );
+    openSubSubMenuToggles.forEach(function(openSubSubMenuToggle) {
+      updateAria(openSubSubMenuToggle, "expanded");
+    });
+    return this;
+  };
+  Navigation.prototype.closeAllSubSubMenuToggles = function() {
+    const openSubSubMenuToggles = document.querySelectorAll(
+      '[data-meom-nav="sub-sub-toggle"][aria-expanded="true"]'
+    );
     openSubSubMenuToggles.forEach(function(openSubSubMenuToggle) {
       updateAria(openSubSubMenuToggle, "expanded");
     });
