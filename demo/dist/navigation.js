@@ -161,8 +161,8 @@
     if (!target.nextElementSibling.classList.contains(
       this.settings.toggleSubNavClassValue
     ) && target.matches('[data-meom-nav="sub-sub-toggle"]')) {
-      this._closeAllSubSubMenus();
-      this._closeAllSubSubMenuToggles();
+      this._closeAllSubSubMenus(target);
+      this._closeAllSubSubMenuToggles(target);
     }
     updateAria(target, "expanded");
     if (target.nextElementSibling) {
@@ -262,9 +262,12 @@
     }, this);
     return this;
   };
-  Navigation.prototype.closeAllSubSubMenus = function() {
-    const openSubSubMenus = document.querySelectorAll(
-      `${this.settings.subNavClass} ${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
+  Navigation.prototype.closeAllSubSubMenus = function(target) {
+    const sameLevelParentSubMenu = target.closest(
+      `${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
+    );
+    const openSubSubMenus = sameLevelParentSubMenu.querySelectorAll(
+      `${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
     );
     openSubSubMenus.forEach(function(openSubSubMenu) {
       this._setSubMenu(openSubSubMenu);
@@ -316,8 +319,11 @@
     });
     return this;
   };
-  Navigation.prototype.closeAllSubSubMenuToggles = function() {
-    const openSubSubMenuToggles = document.querySelectorAll(
+  Navigation.prototype.closeAllSubSubMenuToggles = function(target) {
+    const sameLevelParentSubMenu = target.closest(
+      `${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
+    );
+    const openSubSubMenuToggles = sameLevelParentSubMenu.querySelectorAll(
       '[data-meom-nav="sub-sub-toggle"][aria-expanded="true"]'
     );
     openSubSubMenuToggles.forEach(function(openSubSubMenuToggle) {
