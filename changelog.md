@@ -1,4 +1,6 @@
 # Changelog
+## Version 1.2.0 released April 17, 2024
+- Fixed: Close only same level sub sub menus. This way we can support more sub sub menu levels.
 ## Version 1.1.0 released April 3, 2023
 - Fixed: show only one sub sub menu open at once.
 - Updated NPM packages.

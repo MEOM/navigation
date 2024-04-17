@@ -6,8 +6,8 @@ import commonjs from '@rollup/plugin-commonjs';
 const umd = { format: 'umd', name: 'Navigation', exports: 'named' };
 const es = { format: 'es' };
 const minify = {
-    plugins: [ terser() ],
-    banner: () => `/*! navigation ${ pkg.version } — © MEOM */`,
+    plugins: [terser()],
+    banner: () => `/*! navigation ${pkg.version} — © MEOM */`,
 };
 
 export default {
@@ -20,5 +20,5 @@ export default {
         { file: 'dist/index.min.js', ...umd, ...minify },
         { file: 'dist/index.esm.min.js', ...es, ...minify },
     ],
-    plugins: [ nodeResolve(), commonjs( { include: 'node_modules/**' } ) ],
+    plugins: [nodeResolve(), commonjs({ include: 'node_modules/**' })],
 };

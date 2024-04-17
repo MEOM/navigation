@@ -256,8 +256,8 @@ Navigation.prototype.handleSubNav = function (event) {
         ) &&
         target.matches('[data-meom-nav="sub-sub-toggle"]')
     ) {
-        this._closeAllSubSubMenus();
-        this._closeAllSubSubMenuToggles();
+        this._closeAllSubSubMenus(target);
+        this._closeAllSubSubMenuToggles(target);
     }
 
     // Update sub toggle ARIA.
@@ -457,13 +457,19 @@ Navigation.prototype.closeAllSubMenus = function () {
 };
 
 /**
- * Close all sub sub menus.
+ * Close only same level sub sub menus.
  *
+ * @param {Object} target Target triggered.
  * @return {this} this
  */
-Navigation.prototype.closeAllSubSubMenus = function () {
-    const openSubSubMenus = document.querySelectorAll(
-        `${this.settings.subNavClass} ${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
+Navigation.prototype.closeAllSubSubMenus = function (target) {
+    const sameLevelParentSubMenu = target.closest(
+        `${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
+    );
+
+    // Get same level sub sub menus
+    const openSubSubMenus = sameLevelParentSubMenu.querySelectorAll(
+        `${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
     );
 
     openSubSubMenus.forEach(function (openSubSubMenu) {
@@ -559,12 +565,17 @@ Navigation.prototype.closeAllSubMenuToggles = function () {
 };
 
 /**
- * Close all sub sub menu toggles.
+ * Close all same level sub sub menu toggles.
  *
+ * @param {Object} target Target.
  * @return {this} this
  */
-Navigation.prototype.closeAllSubSubMenuToggles = function () {
-    const openSubSubMenuToggles = document.querySelectorAll(
+Navigation.prototype.closeAllSubSubMenuToggles = function (target) {
+    const sameLevelParentSubMenu = target.closest(
+        `${this.settings.subNavClass}.${this.settings.toggleSubNavClassValue}`
+    );
+
+    const openSubSubMenuToggles = sameLevelParentSubMenu.querySelectorAll(
         '[data-meom-nav="sub-sub-toggle"][aria-expanded="true"]'
     );
 
