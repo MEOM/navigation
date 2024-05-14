@@ -153,7 +153,8 @@
             subToggleButton.type = 'button';
 
             if (this.settings.action === 'click') {
-                subToggleButton.innerHTML = `${subNav.textContent}${this.settings.dropDownIcon}`;
+                // Allow HTML
+                subToggleButton.innerHTML = `${subNav.innerHTML}${this.settings.dropDownIcon}`;
             }
 
             if (this.settings.action === 'hover') {

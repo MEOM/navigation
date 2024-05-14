@@ -85,7 +85,7 @@
       subToggleButton.className = `${this.settings.subToggleButtonClasses}`;
       subToggleButton.type = "button";
       if (this.settings.action === "click") {
-        subToggleButton.innerHTML = `${subNav.textContent}${this.settings.dropDownIcon}`;
+        subToggleButton.innerHTML = `${subNav.innerHTML}${this.settings.dropDownIcon}`;
       }
       if (this.settings.action === "hover") {
         subToggleButton.innerHTML = `<span class="${this.settings.visuallyHiddenClass}">${this.settings.expandChildNavText}</span>${this.settings.dropDownIcon}`;
