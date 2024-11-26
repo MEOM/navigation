@@ -36,6 +36,7 @@
       toggleSubNavClassValue: "is-opened",
       closeNavOnEscKey: true,
       closeNavOnLastTab: false,
+      closeNavOnDocClick: true,
       subNavClass: ".sub-menu",
       subToggleButtonClasses: "",
       subSubToggleButtonClasses: "",
@@ -249,6 +250,9 @@
     if (event.target.closest('[data-meom-nav="navigation"]')) {
       return this;
     }
+    if (!this.settings.closeNavOnDocClick) {
+      return this;
+    }
     this._closeAllSubMenus();
     this._closeAllSubMenuToggles();
     return this;
@@ -344,13 +348,13 @@
     subSubToggleButtonClasses: "site-nav__sub-sub-toggle",
     toggleNavClass: false,
     closeNavOnLastTab: true,
-    onOpenNav: function(element) {
+    onOpenNav(element) {
       document.documentElement.classList.add("overflow-hidden");
       document.documentElement.classList.add("is-site-nav-opened");
       element.classList.add("is-opened");
       animate(element, "fade-in");
     },
-    onCloseNav: function(element) {
+    onCloseNav(element) {
       document.documentElement.classList.remove("overflow-hidden");
       document.documentElement.classList.remove("is-site-nav-opened");
       animate(element, "fade-out", "is-opened");
