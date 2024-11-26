@@ -194,6 +194,7 @@ new Navigation(navElement, navToggle, {
     toggleSubNavClassValue: 'is-opened',
     closeNavOnEscKey: true,
     closeNavOnLastTab: false,
+    closeNavOnDocClick: false,
     subNavClass: '.sub-menu',
     subToggleButtonClasses: '',
     subSubToggleButtonClasses: '',
@@ -256,6 +257,11 @@ Defaults to `true`.
 Sometimes it's useful to close to navigation when Tab key is used on the last navigation anchor.
 
 Defaults to `false`.
+
+### closeNavOnDocClick (boolean)
+Sometimes it's useful not to close navigation when clicking the document.
+
+Defaults to `true`.
 
 ### animateSubNavClass (string)
 Script have basic animation helpers but animations can be done with CSS alone.

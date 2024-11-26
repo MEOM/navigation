@@ -1,4 +1,6 @@
 # Changelog
+## Version 1.3.0 released Nov 26, 2024
+- Added `closeNavOnDocClick` setting.
 ## Version 1.2.1 released May 14, 2024
 - Update: Allow HTML in the buttons.
 ## Version 1.2.0 released April 17, 2024

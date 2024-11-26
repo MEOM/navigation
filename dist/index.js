@@ -80,6 +80,7 @@
             toggleSubNavClassValue: 'is-opened',
             closeNavOnEscKey: true,
             closeNavOnLastTab: false,
+            closeNavOnDocClick: true,
             subNavClass: '.sub-menu',
             subToggleButtonClasses: '',
             subSubToggleButtonClasses: '',
@@ -486,6 +487,11 @@
     Navigation.prototype.handleDocClick = function (event) {
         // Bail if clicking inside the nav.
         if (event.target.closest('[data-meom-nav="navigation"]')) {
+            return this;
+        }
+
+        // Bail if `closeNavOnDocClick` setting is not set to true.
+        if (!this.settings.closeNavOnDocClick) {
             return this;
         }
 
